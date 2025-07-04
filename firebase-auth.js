@@ -7,20 +7,39 @@ import {
   sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-// ✅ Your NEW Firebase Config
+// ✅ Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyA6EYHJBZiaJ7zkSFAceB6Dl2zDvq9rHG0",
   authDomain: "ai-assistant-3d1d1.firebaseapp.com",
   projectId: "ai-assistant-3d1d1",
-  storageBucket: "ai-assistant-3d1d1.firebasestorage.app",
+  storageBucket: "ai-assistant-3d1d1.appspot.com",
   messagingSenderId: "955748553206",
-  appId: "1:955748553206:web:acade72350378d2cb137d7",
-  measurementId: "G-9KFZSC4DS8"
+  appId: "1:955748553206:web:6565b4c200d00c16b137d7",
+  measurementId: "G-DNZ342NMQR"
 };
 
 // ✅ Initialize App and Auth
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+
+// Pop-up functions
+function showSuccessPopup(message) {
+  const popup = document.getElementById("success-popup");
+  document.getElementById("success-message").textContent = message;
+  popup.style.display = "flex";
+}
+
+function showErrorPopup(message) {
+  const popup = document.getElementById("error-popup");
+  document.getElementById("error-message").textContent = message;
+  popup.style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("success-popup").style.display = "none";
+  document.getElementById("error-popup").style.display = "none";
+}
+window.closePopup = closePopup; // Make it accessible globally
 
 // ✅ LOGIN
 window.login = async function (e) {
@@ -30,10 +49,12 @@ window.login = async function (e) {
 
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    alert("Login successful!");
-    window.location.href = "/pages/dashboard.html";
+    showSuccessPopup("Login successful! Redirecting to dashboard...");
+    setTimeout(() => {
+        window.location.href = "/pages/dashboard.html";
+    }, 1500); // Redirect after 1.5 seconds
   } catch (error) {
-    alert("Login failed: " + error.message);
+    showErrorPopup("Login failed: " + error.message);
   }
 };
 
@@ -45,10 +66,12 @@ window.register = async function (e) {
 
   try {
     await createUserWithEmailAndPassword(auth, email, password);
-    alert("Account created! Redirecting to dashboard...");
-    window.location.href = "/pages/dashboard.html";
+    showSuccessPopup("Account created! Redirecting to dashboard...");
+    setTimeout(() => {
+        window.location.href = "/pages/dashboard.html";
+    }, 1500); // Redirect after 1.5 seconds
   } catch (error) {
-    alert("Signup failed: " + error.message);
+    showErrorPopup("Signup failed: " + error.message);
   }
 };
 
@@ -63,15 +86,15 @@ document.getElementById("forgot-password-link")?.addEventListener("click", (e) =
 window.sendResetEmail = async function () {
   const email = document.getElementById("reset-email").value;
   if (!email) {
-    alert("Please enter your email.");
+    showErrorPopup("Please enter your email.");
     return;
   }
 
   try {
     await sendPasswordResetEmail(auth, email);
-    alert("Password reset email sent! Check your inbox.");
+    showSuccessPopup("Password reset email sent! Check your inbox.");
   } catch (error) {
-    alert("Error: " + error.message);
+    showErrorPopup("Error sending reset email: " + error.message);
   }
 };
 
