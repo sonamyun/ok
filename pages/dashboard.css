@@ -1,931 +1,938 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-
-/* Default Light Theme Styles */
-body.light-theme {
-    background-color: #eef2f6;
-    color: #333;
-}
-body.light-theme .sidebar {
-    background: #2c3e50;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-}
-body.light-theme .sidebar-item {
-    color: #ecf0f1;
-}
-body.light-theme .sidebar-item:hover, body.light-theme .sidebar-item.active {
-    background-color: #34495e;
-}
-body.light-theme header {
-    border-bottom: 1px solid #ddd;
-}
-body.light-theme .header-left h1 {
-    color: #333;
-}
-body.light-theme .search-bar input {
-    border: 1px solid #ddd;
-    background-color: #fff;
-}
-body.light-theme .search-bar i {
-    color: #888;
-}
-body.light-theme #language-select {
-    border: 1px solid #ccc;
-    background-color: #fff;
-}
-body.light-theme .user-menu #user-email {
-    color: #555;
-}
-body.light-theme .user-icon {
-    color: #555;
-}
-body.light-theme .user-icon:hover {
-    background-color: #f0f0f0;
-}
-body.light-theme .user-dropdown-content {
-    background-color: #fff;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-body.light-theme .user-dropdown-content a {
-    color: #333;
-}
-body.light-theme .user-dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-body.light-theme .card,
-body.light-theme .settings-panel,
-body.light-theme .integrations-panel,
-body.light-theme .security-panel {
-    background: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-body.light-theme .card:hover {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-}
-body.light-theme .card h2,
-body.light-theme .settings-panel h2,
-body.light-theme .integrations-panel h2,
-body.light-theme .security-panel h2 {
-    color: #333;
-}
-body.light-theme .stats p, body.light-theme .trends p, body.light-theme .notifications ul li, body.light-theme .to-do-list ul li {
-    color: #666;
-}
-body.light-theme .response {
-    background-color: #ecf0f1;
-    border: 1px solid #e0e0e0;
-    color: #333;
-}
-body.light-theme .smart-features .small-text {
-    color: #888;
-}
-body.light-theme .progress-text {
-    color: #333;
-}
-body.light-theme .kpi-card p {
-    color: #777;
-}
-body.light-theme .settings-tabs {
-    border-bottom: 2px solid #eee;
-}
-body.light-theme .settings-tab {
-    color: #777;
-}
-body.light-theme .settings-tab:hover, body.light-theme .settings-tab.active {
-    color: #3498db;
-    border-bottom: 3px solid #3498db;
-}
-body.light-theme .settings-content h3 {
-    color: #444;
-    border-bottom: 1px solid #eee;
-}
-body.light-theme .setting-item, body.light-theme .integration-item, body.light-theme .security-item {
-    border-bottom: 1px solid #eee;
-}
-body.light-theme .setting-item label, body.light-theme .security-item label, body.light-theme .integration-item h3 {
-    color: #555;
-}
-body.light-theme .integration-item p, body.light-theme .security-item p {
-    color: #666;
-}
-body.light-theme .setting-item select, body.light-theme .setting-item input[type="text"], body.light-theme .setting-item input[type="email"] {
-    border: 1px solid #ddd;
-}
-body.light-theme .setting-item input[type="email"][disabled] {
-    background-color: #f0f0f0;
-}
-body.light-theme .chatbox input {
-    background-color: #fefefe;
-    border: 1px solid #ddd;
-}
-
-/* Dark Theme Styles */
-body.dark-theme {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-}
-body.dark-theme .sidebar {
-    background: #34495e;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
-}
-body.dark-theme .sidebar-item {
-    color: #ecf0f1;
-}
-body.dark-theme .sidebar-item:hover, body.dark-theme .sidebar-item.active {
-    background-color: #4a6580;
-}
-body.dark-theme header {
-    border-bottom: 1px solid #555;
-}
-body.dark-theme .header-left h1 {
-    color: #ecf0f1;
-}
-body.dark-theme .search-bar input {
-    border: 1px solid #555;
-    background-color: #3b4d60;
-    color: #ecf0f1;
-}
-body.dark-theme .search-bar i {
-    color: #bbb;
-}
-body.dark-theme #language-select {
-    border: 1px solid #555;
-    background-color: #3b4d60;
-    color: #ecf0f1;
-}
-body.dark-theme .user-menu #user-email {
-    color: #ecf0f1;
-}
-body.dark-theme .user-icon {
-    color: #ecf0f1;
-}
-body.dark-theme .user-icon:hover {
-    background-color: #4a6580;
-}
-body.dark-theme .user-dropdown-content {
-    background-color: #3b4d60;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-}
-body.dark-theme .user-dropdown-content a {
-    color: #ecf0f1;
-}
-body.dark-theme .user-dropdown-content a:hover {
-    background-color: #4a6580;
-}
-body.dark-theme .card,
-body.dark-theme .settings-panel,
-body.dark-theme .integrations-panel,
-body.dark-theme .security-panel {
-    background: #3b4d60;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-body.dark-theme .card:hover {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-}
-body.dark-theme .card h2,
-body.dark-theme .settings-panel h2,
-body.dark-theme .integrations-panel h2,
-body.dark-theme .security-panel h2 {
-    color: #ecf0f1;
-}
-body.dark-theme .stats p, body.dark-theme .trends p, body.dark-theme .notifications ul li, body.dark-theme .to-do-list ul li {
-    color: #bbb;
-}
-body.dark-theme .response {
-    background-color: #4a6580;
-    border: 1px solid #5f7a95;
-    color: #ecf0f1;
-}
-body.dark-theme .smart-features .small-text {
-    color: #bbb;
-}
-body.dark-theme .progress-text {
-    color: #ecf0f1;
-}
-body.dark-theme .kpi-card p {
-    color: #bbb;
-}
-body.dark-theme .settings-tabs {
-    border-bottom: 2px solid #555;
-}
-body.dark-theme .settings-tab {
-    color: #bbb;
-}
-body.dark-theme .settings-tab:hover, body.dark-theme .settings-tab.active {
-    color: #66a6ff; /* Lighter blue for dark mode active tab */
-    border-bottom: 3px solid #66a6ff;
-}
-body.dark-theme .settings-content h3 {
-    color: #ecf0f1;
-    border-bottom: 1px solid #555;
-}
-body.dark-theme .setting-item, body.dark-theme .integration-item, body.dark-theme .security-item {
-    border-bottom: 1px solid #555;
-}
-body.dark-theme .setting-item label, body.dark-theme .security-item label, body.dark-theme .integration-item h3 {
-    color: #ecf0f1;
-}
-body.dark-theme .integration-item p, body.dark-theme .security-item p {
-    color: #bbb;
-}
-body.dark-theme .setting-item select, body.dark-theme .setting-item input[type="text"], body.dark-theme .setting-item input[type="email"] {
-    border: 1px solid #555;
-    background-color: #4a6580;
-    color: #ecf0f1;
-}
-body.dark-theme .setting-item input[type="email"][disabled] {
-    background-color: #3b4d60;
-    color: #bbb;
-}
-body.dark-theme .chatbox input {
-    background-color: #4a6580;
-    border: 1px solid #555;
-    color: #ecf0f1;
-}
-body.dark-theme .chatbox input::placeholder { /* Placeholder color for dark mode */
-    color: #ccc;
-}
-
-
-/* General Styles (Independent of Theme, or overridden by theme) */
+/* General Body and Font Styles */
 body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  display: flex;
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Light background for the dashboard */
+    display: flex; /* Use flexbox for sidebar and main content layout */
+    height: 100vh;
+    overflow: hidden; /* Prevent body scroll, content will scroll if needed */
 }
 
+/* Light Theme (Default) */
+body.light-theme {
+    --bg-color: #f0f2f5;
+    --card-bg-color: #ffffff;
+    --text-color: #333;
+    --sidebar-bg-color: #2c3e50; /* Dark blue-gray for sidebar */
+    --sidebar-text-color: #ecf0f1;
+    --sidebar-hover-bg: #34495e;
+    --sidebar-active-bg: #1abc9c; /* Greenish-blue for active */
+    --header-bg-color: #ffffff;
+    --header-border-bottom: 1px solid #ddd;
+    --search-bg-color: #f0f2f5;
+    --input-border-color: #ccc;
+    --button-primary-bg: #3498db;
+    --button-primary-color: #fff;
+    --button-hover-bg: #2980b9;
+    --kpi-progress-bg: #eee;
+    --kpi-progress-bar: #1abc9c;
+    --popup-bg: #fff;
+    --popup-border: 1px solid #ddd;
+    --tab-inactive-bg: #ecf0f1;
+    --tab-active-bg: #ffffff;
+    --tab-border-color: #ddd;
+    --link-color: #3498db;
+    --border-color-light: #eee;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --bg-color: #2c3e50;
+    --card-bg-color: #34495e;
+    --text-color: #ecf0f1;
+    --sidebar-bg-color: #22313f;
+    --sidebar-text-color: #ecf0f1;
+    --sidebar-hover-bg: #2c3e50;
+    --sidebar-active-bg: #16a085;
+    --header-bg-color: #34495e;
+    --header-border-bottom: 1px solid #4a6c8e;
+    --search-bg-color: #2c3e50;
+    --input-border-color: #555;
+    --button-primary-bg: #2980b9;
+    --button-primary-color: #fff;
+    --button-hover-bg: #1d6fa0;
+    --kpi-progress-bg: #4a6c8e;
+    --kpi-progress-bar: #16a085;
+    --popup-bg: #34495e;
+    --popup-border: 1px solid #4a6c8e;
+    --tab-inactive-bg: #2c3e50;
+    --tab-active-bg: #34495e;
+    --tab-border-color: #4a6c8e;
+    --link-color: #89cff0;
+    --border-color-light: #4a6c8e;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar Styles */
 .sidebar {
-  width: 70px;
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: width 0.3s ease, background-color 0.3s ease;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-}
-
-.sidebar:hover {
-  width: 200px;
+    width: 250px;
+    background-color: var(--sidebar-bg-color);
+    color: var(--sidebar-text-color);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
 }
 
 .sidebar-item {
-  text-decoration: none;
-  padding: 15px 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  transition: background-color 0.2s ease, transform 0.2s ease, color 0.3s ease;
-  overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--sidebar-text-color);
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-item:hover {
+    background-color: var(--sidebar-hover-bg);
+}
+
+.sidebar-item.active {
+    background-color: var(--sidebar-active-bg);
+    color: #fff; /* Ensure active item text is white for contrast */
 }
 
 .sidebar-item i {
-  font-size: 20px;
-  margin-left: 25px;
-  margin-right: 15px;
+    margin-right: 15px; /* Spacing between icon and text */
+    font-size: 20px;
+    width: 25px; /* Ensure consistent icon width */
+    text-align: center;
 }
 
 .sidebar-item span {
-  display: inline-block;
-  white-space: nowrap;
-  opacity: 0;
-  max-width: 0;
-  transition: opacity 0.3s ease, max-width 0.3s ease;
+    flex-grow: 1; /* Allow text to take remaining space */
 }
 
-.sidebar:hover .sidebar-item span {
-  opacity: 1;
-  max-width: 120px;
-}
-
+/* Main Content Area */
 .main {
-  flex: 1;
-  padding: 20px 30px;
-  overflow-y: auto;
+    flex-grow: 1; /* Allow main content to take remaining space */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allow scrolling for main content if it overflows */
+    padding: 20px;
 }
 
+/* Header Styles */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 20px;
-  margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--header-bg-color);
+    border-bottom: var(--header-border-bottom);
+    margin-bottom: 20px;
+    border-radius: 8px; /* Rounded corners for header */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    flex-wrap: wrap; /* Allow header items to wrap on smaller screens */
+    gap: 15px; /* Spacing between header elements */
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .header-left h1 {
-  margin: 0;
-  font-size: 1.8em;
-  transition: color 0.3s ease;
+    font-size: 24px;
+    margin: 0;
+    color: var(--text-color);
 }
 
 .search-bar {
     position: relative;
-    width: 250px;
+    display: flex;
+    align-items: center;
 }
 
 .search-bar input {
-    width: 100%;
-    padding: 10px 15px 10px 40px;
-    border-radius: 25px;
-    font-size: 0.95em;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    padding: 10px 15px 10px 40px; /* Left padding for icon */
+    border: 1px solid var(--input-border-color);
+    border-radius: 20px;
+    background-color: var(--search-bg-color);
+    color: var(--text-color);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    width: 250px; /* Fixed width for search bar */
+}
+
+.search-bar input::placeholder {
+    color: var(--text-color); /* Adjust placeholder color for readability */
+    opacity: 0.7;
+}
+
+.search-bar input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 .search-bar i {
     position: absolute;
     left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: color 0.3s ease;
+    color: #888;
+    font-size: 18px;
 }
 
 .header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
+/* Language Dropdown */
 #language-select {
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.9em;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    padding: 8px 30px 8px 10px; /* Adjust padding, leave space for custom arrow */
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="%23888" d="M0,2.5 L5,7.5 L10,2.5 Z"/></svg>'); /* Small SVG arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 10px;
+    min-width: 120px; /* Ensure dropdown has enough width */
 }
 
+#language-select:hover {
+    border-color: #999;
+}
+
+/* User Menu Dropdown */
 .user-menu {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
 }
 
-.user-menu #user-email {
-    font-weight: 600;
-    font-size: 0.95em;
-    transition: color 0.3s ease;
+.user-menu span {
+    font-weight: bold;
+    margin-right: 10px;
+    color: var(--text-color);
 }
 
 .user-icon {
-  font-size: 28px;
-  padding: 5px;
-  border-radius: 50%;
-  transition: background-color 0.2s ease, color 0.3s ease;
+    font-size: 24px;
+    color: #3498db; /* A distinct color for the user icon */
 }
 
 .user-dropdown-content {
-  display: none;
-  position: absolute;
-  min-width: 160px;
-  z-index: 10;
-  right: 0;
-  top: 40px;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: none;
+    position: absolute;
+    background-color: var(--card-bg-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures rounded corners */
 }
 
 .user-dropdown-content a {
-  padding: 12px 15px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  transition: background-color 0.2s ease, color 0.3s ease;
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+    display: flex; /* For icon and text alignment */
+    align-items: center;
+}
+
+.user-dropdown-content a i {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #888; /* Slightly subdued icon color */
+}
+
+.user-dropdown-content a:hover {
+    background-color: var(--search-bg-color); /* Lighter background on hover */
 }
 
 .user-dropdown-content.show {
-  display: block;
+    display: block;
 }
 
-/* Dashboard Content & Grid */
-.dashboard-content {
-    width: 100%;
-}
-
+/* Dashboard Grid Layout */
 .dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    flex-grow: 1;
+    padding-bottom: 20px; /* Add padding at the bottom for scrolling content */
 }
 
 .card {
-  padding: 25px;
-  border-radius: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
+    background-color: var(--card-bg-color);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .card h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 1.4em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: color 0.3s ease;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and heading */
 }
+
 .card h2 i {
-    color: #3498db;
+    font-size: 20px;
+    color: #3498db; /* Consistent icon color for headings */
 }
-.card.stats h2 i { color: #2ecc71; }
-.card.trends h2 i { color: #f39c12; }
-.card.quick-actions h2 i { color: #e74c3c; }
-.card.chatbox h2 i { color: #9b59b6; }
-.card.to-do-list h2 i { color: #3498db; }
-.card.calendar h2 i { color: #e74c3c; }
-.card.notifications h2 i { color: #f1c40f; }
-.card.kpi-card h2 i { color: #1abc9c; }
 
-
-.stats p, .trends p, .notifications ul li, .to-do-list ul li {
-  line-height: 1.6;
-  margin-bottom: 8px;
-  transition: color 0.3s ease;
+.card p, .card ul {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-color);
 }
-.trends ul, .to-do-list ul, .notifications ul {
+
+.card ul {
     list-style: none;
     padding: 0;
-}
-.trends ul li:before, .to-do-list ul li:before, .notifications ul li:before {
-    content: "•";
-    color: #3498db;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
+    margin: 0;
 }
 
+.card ul li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 15px;
+}
 
-.action-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.card ul li:last-child {
+    margin-bottom: 0;
+}
+
+.card ul li::before {
+    content: '•';
+    color: #1abc9c; /* Green dot */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
 }
 
 /* Quick Actions Button Styles */
-.quick-actions .action-buttons .btn {
-  flex: 1 1 auto; /* Allow buttons to grow and shrink, but maintain minimum width */
-  min-width: 120px; /* Ensure buttons don't get too small */
-  padding: 15px 20px; /* Increased padding for better touch targets and appearance */
-  border: none;
-  border-radius: 10px; /* More rounded corners */
-  font-weight: bold;
-  font-size: 1.1em; /* Slightly larger font */
-  cursor: pointer;
-  display: flex;
-  flex-direction: column; /* Stack icon and text */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Softer initial shadow */
-  transition: all 0.3s ease; /* Smooth transitions for all properties */
+.quick-actions .action-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 15px; /* Spacing between buttons */
+    margin-top: 15px;
+    justify-content: center; /* Center buttons horizontally */
+    flex-grow: 1; /* Allow button container to grow */
+    align-items: center; /* Vertically align buttons */
 }
 
-.quick-actions .action-buttons .btn i {
-  font-size: 2.2em; /* Larger icons */
-  margin-bottom: 8px; /* Space between icon and text */
-  display: block; /* Ensure icon takes its own line */
+.quick-actions .btn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between icon and text */
+    min-width: 150px; /* Ensure buttons have a minimum width */
+    color: #fff; /* Default text color for buttons */
 }
 
-.quick-actions .action-buttons .btn:hover {
-  transform: translateY(-5px); /* More pronounced lift effect on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+.quick-actions .btn i {
+    font-size: 18px;
 }
 
 /* Specific button colors */
-.quick-actions .action-buttons .btn.help {
-  background-color: #e74c3c; /* Red for emergency/help */
-  color: white;
+.quick-actions .btn.help {
+    background-color: #e74c3c; /* Red */
+}
+.quick-actions .btn.help:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.quick-actions .action-buttons .btn.locate {
-  background-color: #2ecc71; /* Green for locate/safe actions */
-  color: white;
+.quick-actions .btn.locate {
+    background-color: #2ecc71; /* Green */
+}
+.quick-actions .btn.locate:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.quick-actions .action-buttons .btn.doctor {
-  background-color: #f39c12; /* Orange/Yellow for doctor/consultation */
-  color: white; /* Changed to white for better contrast */
+.quick-actions .btn.doctor {
+    background-color: #f39c12; /* Orange */
+}
+.quick-actions .btn.doctor:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Ensure emergency.html styling is clear and impactful */
-/* (This CSS would ideally be in emergency.html's own stylesheet or inline, 
-   but demonstrating here for completeness of styling adjustments) */
-body.emergency-page {
-    background-color: #fee; /* Very light red background */
-    color: #333;
+.quick-actions .btn.report { /* New button style */
+    background-color: #9b59b6; /* Purple */
 }
-.emergency-page h1 {
-    color: #e74c3c; /* Strong red for emergency title */
-    font-size: 2.5em;
-    text-align: center;
-    margin-bottom: 30px;
+.quick-actions .btn.report:hover {
+    background-color: #8e44ad;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
-.emergency-page ul {
-    list-style: none;
-    padding: 0;
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+.quick-actions .btn.appointment { /* New button style */
+    background-color: #3498db; /* Blue */
 }
-.emergency-page li {
-    background-color: #fff;
-    border: 1px solid #fbdada; /* Light red border */
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 8px;
+.quick-actions .btn.appointment:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Chatbox Styles */
+.chatbox {
+    grid-column: span 2; /* Make chatbox span two columns in larger layouts */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.1em;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-.emergency-page li strong {
-    color: #c0392b; /* Darker red for labels */
+    flex-direction: column;
 }
 
-
-/* Chatbox specific styles */
 .chat-input-area {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .chat-input-area input {
-  flex-grow: 1;
-  padding: 12px 15px;
-  border-radius: 8px;
-  font-size: 1em;
-  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 25px;
+    background-color: var(--search-bg-color);
+    color: var(--text-color);
+    font-size: 15px;
+    outline: none;
 }
 
-.chat-input-area .submit-btn {
-  padding: 12px 25px;
-  background-color: #007bff; /* Blue send button */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.2s ease;
+.chat-input-area input:focus {
+    border-color: #3498db;
 }
 
-.chat-input-area .submit-btn:hover {
-  background-color: #0056b3;
+.chatbox .submit-btn {
+    padding: 10px 20px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-.response {
-  padding: 15px;
-  border-radius: 8px;
-  white-space: pre-wrap; /* Preserve line breaks */
-  min-height: 80px; /* Ensure some height for initial display */
-  display: flex;
-  align-items: center; /* Vertically center content */
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+.chatbox .submit-btn:hover {
+    background-color: #16a085;
 }
 
-.smart-features {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+.chatbox .response {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: var(--search-bg-color);
+    border-radius: 8px;
+    min-height: 80px; /* Ensure some height for response */
+    white-space: pre-wrap; /* Preserve line breaks */
+    word-wrap: break-word; /* Break long words */
+    font-size: 14px;
+    color: var(--text-color);
 }
 
-.smart-features .small-text {
-  font-size: 0.85em;
-  font-style: italic;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: color 0.3s ease;
+.chatbox .smart-features {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.smart-features .export-btn {
-  padding: 8px 15px;
-  background-color: #6c757d; /* Grey export button */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.9em;
-  transition: background-color 0.2s ease;
+.chatbox .smart-features .small-text {
+    font-size: 13px;
+    color: #888;
+    margin: 0;
 }
 
-.smart-features .export-btn:hover {
-  background-color: #5a6268;
+.chatbox .export-btn {
+    padding: 8px 15px;
+    background-color: #95a5a6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
 }
 
-/* KPI Card - Progress Ring */
-.progress-ring-container {
+.chatbox .export-btn:hover {
+    background-color: #7f8c8d;
+}
+
+/* KPI Card Progress Ring */
+.kpi-card {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.progress-ring-container {
     margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .progress-ring {
     position: relative;
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
+    width: 120px; /* Size of the ring */
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .progress-svg {
-    transform: rotate(-90deg); /* Start from the top */
-    overflow: visible; /* Ensure shadows/ends are visible */
+    transform: rotate(-90deg); /* Start at the top */
+    width: 100%;
+    height: 100%;
 }
 
 .progress-bg {
     fill: none;
-    stroke: #e0e0e0;
-    stroke-width: 10;
-}
-body.dark-theme .progress-bg {
-    stroke: #555;
+    stroke: var(--kpi-progress-bg);
+    stroke-width: 10; /* Width of the progress line */
 }
 
 .progress-bar {
     fill: none;
-    stroke: #3498db; /* Blue progress bar */
+    stroke: var(--kpi-progress-bar);
     stroke-width: 10;
     stroke-linecap: round; /* Rounded ends for the progress bar */
-    transition: stroke-dashoffset 0.8s ease-out, stroke 0.3s ease;
+    transition: stroke-dashoffset 0.8s ease-out;
 }
 
 .progress-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.8em;
+    font-size: 24px;
     font-weight: bold;
-    transition: color 0.3s ease;
+    color: var(--text-color);
 }
 
-/* Settings Panel General Styles */
-.settings-panel,
-.integrations-panel,
-.security-panel {
-    padding: 30px;
+/* Settings Panel and Tabs */
+.settings-panel, .integrations-panel, .security-panel {
+    padding: 20px;
+    background-color: var(--card-bg-color);
     border-radius: 12px;
-    margin-top: 25px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+    flex-grow: 1; /* Allow panels to grow and take space */
+    overflow-y: auto; /* Allow scrolling within panels */
 }
 
-.settings-panel h2,
-.integrations-panel h2,
-.security-panel h2 {
+.settings-panel h2, .integrations-panel h2, .security-panel h2 {
+    font-size: 24px;
     margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: var(--text-color);
     display: flex;
     align-items: center;
-    gap: 15px;
-    border-bottom: 2px solid;
-    padding-bottom: 15px;
-    transition: color 0.3s ease, border-color 0.3s ease;
+    gap: 10px;
 }
-.settings-panel h2 i { color: #3498db; }
-.integrations-panel h2 i { color: #9b59b6; }
-.security-panel h2 i { color: #f1c40f; }
+
+.settings-panel h2 i, .integrations-panel h2 i, .security-panel h2 i {
+    font-size: 24px;
+    color: #3498db;
+}
+
+.settings-panel p, .integrations-panel p, .security-panel p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
 
 .settings-tabs {
     display: flex;
     margin-bottom: 25px;
-    gap: 15px;
+    border-bottom: 1px solid var(--tab-border-color);
+    flex-wrap: wrap;
+    gap: 5px; /* Small gap between tabs */
 }
 
 .settings-tab {
-    background: none;
+    padding: 12px 20px;
     border: none;
-    padding: 10px 0;
-    font-size: 1.1em;
+    background-color: var(--tab-inactive-bg);
+    color: var(--text-color);
     cursor: pointer;
-    font-weight: 600;
-    transition: color 0.2s ease, border-bottom 0.2s ease;
+    font-size: 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: 3px solid transparent; /* For active indicator */
+}
+
+.settings-tab:hover {
+    background-color: var(--tab-inactive-bg);
+    opacity: 0.9;
+}
+
+.settings-tab.active {
+    background-color: var(--tab-active-bg);
+    color: #3498db;
+    font-weight: bold;
+    border-bottom: 3px solid #3498db;
 }
 
 .settings-content {
-    display: none; /* Hidden by default */
-    padding-top: 15px;
+    display: none;
+    padding-top: 10px; /* Space from tabs */
 }
+
 .settings-content.active {
-    display: block; /* Show active tab content */
+    display: block;
 }
 
 .settings-content h3 {
+    font-size: 18px;
     margin-top: 0;
     margin-bottom: 20px;
-    font-size: 1.3em;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color-light);
     padding-bottom: 10px;
-    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.setting-item, .integration-item, .security-item {
+.setting-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
-    font-size: 1.0em;
-    transition: border-color 0.3s ease;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    gap: 10px; /* Space between items when wrapped */
+    border-bottom: 1px solid var(--border-color-light);
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 10px;
 }
 
-.setting-item:last-child, .integration-item:last-child, .security-item:last-child {
-    border-bottom: none; /* No border for the last item */
+.setting-item:last-of-type {
+    border-bottom: none;
 }
 
-.setting-item label, .security-item label, .integration-item h3 {
-    font-weight: 600;
-    flex-shrink: 0; /* Prevent label from shrinking */
-    transition: color 0.3s ease;
+.setting-item label {
+    font-size: 16px;
+    font-weight: bold;
+    flex-basis: 30%; /* Give labels some fixed width */
+    min-width: 150px; /* Minimum width for label */
+    color: var(--text-color);
 }
 
-.setting-item select, .setting-item input[type="text"], .setting-item input[type="email"] {
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 0.95em;
-    flex-grow: 1; /* Allow inputs to take available space */
-    max-width: 250px; /* Max width for inputs */
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+.setting-item input[type="text"],
+.setting-item input[type="email"],
+.setting-item select {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 8px;
+    background-color: var(--search-bg-color);
+    color: var(--text-color);
+    font-size: 15px;
+    outline: none;
+    min-width: 200px; /* Ensure inputs have minimum width */
 }
+
+.setting-item select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="%23888" d="M0,2.5 L5,7.5 L10,2.5 Z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 10px;
+    cursor: pointer;
+}
+
 
 .setting-item input[type="checkbox"] {
+    margin-left: auto; /* Push checkbox to the right */
     width: 20px;
     height: 20px;
     cursor: pointer;
+    accent-color: #3498db; /* Color the checkbox itself */
 }
 
-.btn-small {
+.setting-item .btn-small {
     padding: 8px 15px;
-    background-color: #3498db; /* Blue for small buttons */
-    color: white;
+    background-color: #3498db;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-left: 10px; /* Space between buttons */
 }
 
-.btn-small:hover {
-    background-color: #2188da;
-    transform: translateY(-1px);
+.setting-item .btn-small:hover {
+    background-color: #2980b9;
 }
 
 .save-settings-btn {
-    margin-top: 25px;
     padding: 12px 25px;
-    background-color: #28a745; /* Green save button */
-    color: white;
+    background-color: #1abc9c;
+    color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 16px;
     font-weight: bold;
+    margin-top: 25px;
     display: flex;
     align-items: center;
     gap: 10px;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    transition: background-color 0.3s ease;
 }
 
 .save-settings-btn:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+    background-color: #16a085;
 }
 
+.save-settings-btn i {
+    font-size: 18px;
+}
+
+/* Integrations & Security Panel */
+.integration-item, .security-item {
+    background-color: var(--search-bg-color); /* Slightly different background for items */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.integration-item h3, .security-item h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.integration-item p, .security-item p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allow paragraph to take space */
+}
+
+/* Membership Popup */
 .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .popup-content {
-    background-color: #fff;
+    background-color: var(--popup-bg);
     padding: 30px;
     border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 90%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-body.dark-theme .popup-content {
-    background-color: #3b4d60;
-    color: #ecf0f1;
+    border: var(--popup-border);
 }
 
 .popup-content h3 {
-    color: #e74c3c;
+    font-size: 22px;
     margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 1.6em;
+    color: var(--text-color);
 }
 
 .popup-content p {
+    font-size: 16px;
     margin-bottom: 25px;
-    line-height: 1.6;
+    color: var(--text-color);
 }
 
 .popup-content button {
-    padding: 10px 20px;
+    padding: 10px 25px;
     background-color: #3498db;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .popup-content button:hover {
-    background-color: #2188da;
+    background-color: #2980b9;
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 60px; /* Keep sidebar narrower on small screens */
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
-    .sidebar:hover {
-        width: 150px; /* Slightly less expansion */
+    .chatbox {
+        grid-column: span 1; /* On smaller screens, chatbox takes 1 column */
     }
-    .sidebar-item span {
-        font-size: 0.8em;
-    }
-    .sidebar:hover .sidebar-item span {
-        max-width: 80px; /* Adjust max-width for smaller expanded sidebar */
-    }
-
     .main {
         padding: 15px;
     }
-
     header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 15px;
+        gap: 10px;
+        padding: 15px;
     }
-    .header-left {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    .search-bar {
-        width: 100%; /* Full width search bar */
-    }
-    .header-right {
+    .header-left, .header-right {
         width: 100%;
         justify-content: space-between;
     }
+    .search-bar input {
+        width: 100%;
+    }
+    .sidebar {
+        width: 200px; /* Slightly smaller sidebar on tablets */
+    }
+}
 
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Full width sidebar on very small screens */
+        height: auto;
+        flex-direction: row; /* Horizontal layout for sidebar items */
+        padding: 10px 0;
+        justify-content: center;
+        flex-wrap: wrap; /* Allow sidebar items to wrap */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .sidebar-item {
+        padding: 10px;
+        flex-grow: 1; /* Allow items to share space */
+        justify-content: center; /* Center content in item */
+    }
+    .sidebar-item span {
+        display: none; /* Hide text, show only icon on small screens */
+    }
+    .sidebar-item i {
+        margin-right: 0; /* No margin if text is hidden */
+    }
+    body {
+        flex-direction: column; /* Stack sidebar and main content */
+        height: auto; /* Allow body to grow */
+    }
+    .main {
+        padding: 10px;
+        min-height: calc(100vh - 70px); /* Adjust min-height if sidebar is fixed height */
+    }
     .dashboard-grid {
-        grid-template-columns: 1fr; /* Single column layout for cards */
+        grid-template-columns: 1fr; /* Single column layout on mobile */
     }
-
-    .action-buttons {
-        flex-direction: column; /* Stack quick action buttons vertically */
+    .quick-actions .action-buttons {
+        flex-direction: column; /* Stack buttons vertically */
     }
-
+    .quick-actions .btn {
+        width: 100%; /* Full width buttons */
+    }
     .settings-tabs {
-        flex-wrap: wrap; /* Allow tabs to wrap */
+        flex-direction: column; /* Stack settings tabs vertically */
     }
-
-    .setting-item, .integration-item, .security-item {
-        flex-direction: column; /* Stack settings items vertically */
+    .settings-tab {
+        width: 100%; /* Full width tabs */
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .settings-tab.active {
+        border-bottom: none;
+    }
+    .setting-item {
+        flex-direction: column;
         align-items: flex-start;
     }
-    .setting-item select, .setting-item input[type="text"], .setting-item input[type="email"] {
-        width: 100%; /* Full width for form elements */
-        max-width: none;
+    .setting-item label {
+        width: 100%;
+        text-align: left;
+    }
+    .setting-item input[type="text"],
+    .setting-item input[type="email"],
+    .setting-item select,
+    .setting-item .btn-small {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        display: block;
+        height: auto;
+        overflow: visible;
+        background-color: #fff;
+    }
+    .sidebar, header, .settings-panel, .integrations-panel, .security-panel, .popup-overlay, footer {
+        display: none !important;
+    }
+    .main {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        overflow: visible;
+    }
+    .dashboard-grid {
+        display: block;
+    }
+    .card {
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+        border: 1px solid #eee;
+        box-shadow: none;
+    }
+    .chatbox .response {
+        background-color: #f9f9f9;
+        border: 1px dashed #ccc;
     }
 }

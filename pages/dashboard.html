@@ -9,19 +9,19 @@
 </head>
 <body>
   <div class="sidebar">
-    <a href="#" class="sidebar-item active" id="home-sidebar-item">
+    <a href="#" class="sidebar-item active" id="home-sidebar-item" data-key="sidebarHome">
       <i class="fas fa-home"></i>
       <span>Home</span>
     </a>
-    <a href="#" class="sidebar-item" id="settings-sidebar-item">
+    <a href="#" class="sidebar-item" id="settings-sidebar-item" data-key="sidebarSettings">
       <i class="fas fa-cog"></i>
       <span>Settings</span>
     </a>
-    <a href="#" class="sidebar-item" id="integrations-sidebar-item">
+    <a href="#" class="sidebar-item" id="integrations-sidebar-item" data-key="sidebarIntegrations">
         <i class="fas fa-puzzle-piece"></i>
         <span>Integrations</span>
     </a>
-    <a href="#" class="sidebar-item" id="security-sidebar-item">
+    <a href="#" class="sidebar-item" id="security-sidebar-item" data-key="sidebarSecurity">
         <i class="fas fa-shield-alt"></i>
         <span>Security</span>
     </a>
@@ -29,22 +29,22 @@
   <div class="main">
     <header>
       <div class="header-left">
-        <h1>Swastha AI Dashboard</h1>
+        <h1 data-key="dashboardTitle">Swastha AI Dashboard</h1>
         <div class="search-bar">
-          <input type="text" placeholder="Global Search..." oninput="console.log('Searching: ' + this.value)" />
+          <input type="text" data-key="globalSearchPlaceholder" placeholder="Global Search..." oninput="console.log('Searching: ' + this.value)" />
           <i class="fas fa-search"></i>
         </div>
       </div>
       <div class="header-right">
-        <select id="language-select" onchange="changeLanguage(this.value)">
-          <option value="en">English</option>
-          <option value="ne">Nepali</option>
+        <select id="language-select" onchange="setLanguage(this.value)">
+          <option value="en" data-key="langEnglish">English</option>
+          <option value="ne" data-key="langNepali">Nepali</option>
           </select>
         <div class="user-menu">
           <span id="user-email">Loading...</span> <i class="fas fa-user-circle user-icon"></i>
           <div class="user-dropdown-content">
-            <a href="#" id="profile-link" onclick="console.log('Profile link clicked');"><i class="fas fa-user-alt"></i> Profile</a>
-            <a href="#" id="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="#" id="profile-link" onclick="console.log('Profile link clicked');" data-key="userProfile"><i class="fas fa-user-alt"></i> Profile</a>
+            <a href="#" id="logout-button" data-key="userLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
           </div>
         </div>
       </div>
@@ -53,73 +53,75 @@
     <div class="dashboard-content" id="dashboard-content">
       <div class="dashboard-grid">
         <section class="stats card">
-          <h2>User Stats</h2>
-          <p>Email: <span id="email-stat">Loading...</span></p>
-          <p>Auth Type: <span id="authType-stat">Loading...</span></p>
-          <p>Total Users: <span id="totalUsers-stat">N/A</span></p> <p>Active Users: <span id="activeUsers-stat">N/A</span></p> </section>
+          <h2 data-key="userStatsHeading">User Stats</h2>
+          <p><span data-key="emailLabel">Email</span>: <span id="email-stat">Loading...</span></p>
+          <p><span data-key="authTypeLabel">Auth Type</span>: <span id="authType-stat">Loading...</span></p>
+          <p><span data-key="totalUsersLabel">Total Users</span>: <span id="totalUsers-stat">N/A</span></p>
+          <p><span data-key="activeUsersLabel">Active Users</span>: <span id="activeUsers-stat">N/A</span></p>
+        </section>
 
         <section class="trends card">
-          <h2>Medical Trends</h2>
-          <p>Recent health-related insights and updates. Stay informed about the latest in healthcare.</p>
+          <h2 data-key="medicalTrendsHeading">Medical Trends</h2>
+          <p data-key="medicalTrendsParagraph">Recent health-related insights and updates. Stay informed about the latest in healthcare.</p>
           <ul>
-            <li>Increased flu cases reported in Bagmati Province.</li>
-            <li>New guidelines for diabetes management published.</li>
-            <li>Telemedicine adoption growing.</li>
+            <li data-key="trendFlu">Increased flu cases reported in Bagmati Province.</li>
+            <li data-key="trendDiabetes">New guidelines for diabetes management published.</li>
+            <li data-key="trendTelemedicine">Telemedicine adoption growing.</li>
           </ul>
         </section>
 
         <section class="quick-actions card">
-          <h2>Quick Actions</h2>
+          <h2 data-key="quickActionsHeading">Quick Actions</h2>
           <div class="action-buttons">
-            <button class="btn help" onclick="redirectHelp()">
+            <button class="btn help" onclick="redirectHelp()" data-key="actionAskHelp">
               <i class="fas fa-medkit"></i> Ask Help
             </button>
-            <button class="btn locate" onclick="redirectLocate()">
+            <button class="btn locate" onclick="redirectLocate()" data-key="actionLocate">
               <i class="fas fa-map-marker-alt"></i> Locate
             </button>
-            <button class="btn doctor" onclick="askDoctor()">
+            <button class="btn doctor" onclick="askDoctor()" data-key="actionAskDoctor">
               <i class="fas fa-user-md"></i> Ask Doctor
             </button>
           </div>
         </section>
 
         <section class="chatbox card">
-          <h2>Chat with Swastha AI</h2>
+          <h2 data-key="chatHeading">Chat with Swastha AI</h2>
           <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Describe your medical symptoms (e.g., I have a headache and feel dizzy)..." />
-            <button class="submit-btn" onclick="sendMessage()">Send</button>
+            <input type="text" id="chat-input" data-key="chatInputPlaceholder" placeholder="Describe your medical symptoms (e.g., I have a headache and feel dizzy)..." />
+            <button class="submit-btn" onclick="sendMessage()" data-key="sendButton">Send</button>
           </div>
-          <div class="response">Swastha AI: Type your symptoms above to get assistance.</div>
+          <div class="response" data-key="chatInitialResponse">Swastha AI: Type your symptoms above to get assistance.</div>
           <div class="smart-features">
-              <p class="small-text"><i class="fas fa-lightbulb"></i> Smart suggestions: "Your traffic is 20% lower than usual on Wednesdays."</p>
-              <button class="export-btn" onclick="console.log('Export chat clicked');"><i class="fas fa-file-export"></i> Export Chat (PDF)</button>
+              <p class="small-text"><i class="fas fa-lightbulb"></i> <span data-key="smartSuggestionsText">Smart suggestions: "Your traffic is 20% lower than usual on Wednesdays."</span></p>
+              <button class="export-btn" onclick="console.log('Export chat clicked');" data-key="exportChatButton"><i class="fas fa-file-export"></i> Export Chat (PDF)</button>
           </div>
         </section>
 
         <section class="to-do-list card">
-            <h2><i class="fas fa-clipboard-list"></i> To-Do List</h2>
+            <h2 data-key="todoListHeading"><i class="fas fa-clipboard-list"></i> To-Do List</h2>
             <ul>
-              <li>Schedule annual check-up</li>
-              <li>Research healthy recipes</li>
-              <li>Exercise for 30 minutes</li>
+              <li data-key="todoCheckup">Schedule annual check-up</li>
+              <li data-key="todoRecipes">Research healthy recipes</li>
+              <li data-key="todoExercise">Exercise for 30 minutes</li>
             </ul>
         </section>
 
         <section class="calendar card">
-            <h2><i class="fas fa-calendar-alt"></i> Calendar</h2>
-            <p>Today: No special events. <br> Upcoming: Dental appointment (July 10).</p>
+            <h2 data-key="calendarHeading"><i class="fas fa-calendar-alt"></i> Calendar</h2>
+            <p><span data-key="calendarToday">Today</span>: <span data-key="calendarNoEvents">No special events.</span> <br> <span data-key="calendarUpcoming">Upcoming</span>: <span data-key="calendarDentalAppointment">Dental appointment (July 10).</span></p>
         </section>
 
         <section class="notifications card">
-            <h2><i class="fas fa-bell"></i> Notifications</h2>
+            <h2 data-key="notificationsHeading"><i class="fas fa-bell"></i> Notifications</h2>
             <ul>
-              <li>New message from Dr. Sharma.</li>
-              <li>Reminder: Take medication at 8 PM.</li>
+              <li data-key="notificationMessage">New message from Dr. Sharma.</li>
+              <li data-key="notificationReminder">Reminder: Take medication at 8 PM.</li>
             </ul>
         </section>
 
         <section class="kpi-card card">
-            <h2><i class="fas fa-tachometer-alt"></i> Health Score</h2>
+            <h2 data-key="healthScoreHeading"><i class="fas fa-tachometer-alt"></i> Health Score</h2>
             <div class="progress-ring-container">
                 <div class="progress-ring" data-progress="75">
                     <svg class="progress-svg" viewBox="0 0 100 100">
@@ -128,7 +130,7 @@
                     </svg>
                     <div class="progress-text">75%</div>
                 </div>
-                <p>Overall Health Index</p>
+                <p data-key="healthIndexParagraph">Overall Health Index</p>
             </div>
         </section>
 
@@ -136,159 +138,157 @@
     </div>
 
     <div id="settings-panel" class="settings-panel" style="display: none;">
-      <h2><i class="fas fa-cog"></i> Settings</h2>
+      <h2 data-key="settingsPanelHeading"><i class="fas fa-cog"></i> Settings</h2>
       <div class="settings-tabs">
-        <button class="settings-tab active" data-tab="user-prefs">User Preferences</button>
-        <button class="settings-tab" data-tab="account-settings">Account Settings</button>
-        <button class="settings-tab" data-tab="customization">Customization</button>
-        <button class="settings-tab" data-tab="system-settings">System Settings</button>
+        <button class="settings-tab active" data-tab="user-prefs" data-key="tabUserPrefs">User Preferences</button>
+        <button class="settings-tab" data-tab="account-settings" data-key="tabAccountSettings">Account Settings</button>
+        <button class="settings-tab" data-tab="customization" data-key="tabCustomization">Customization</button>
+        <button class="settings-tab" data-tab="system-settings" data-key="tabSystemSettings">System Settings</button>
       </div>
 
       <div id="user-prefs" class="settings-content active">
-        <h3>User Preferences</h3>
+        <h3 data-key="userPrefsSubheading">User Preferences</h3>
         <div class="setting-item">
-          <label for="theme-select">Theme:</label>
+          <label for="theme-select" data-key="themeLabel">Theme:</label>
           <select id="theme-select">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="auto">Auto</option>
+            <option value="light" data-key="themeLight">Light</option>
+            <option value="dark" data-key="themeDark">Dark</option>
+            <option value="auto" data-key="themeAuto">Auto</option>
           </select>
         </div>
         <div class="setting-item">
-          <label for="notification-email-toggle">Email Notifications:</label>
+          <label for="notification-email-toggle" data-key="emailNotificationsLabel">Email Notifications:</label>
           <input type="checkbox" id="notification-email-toggle" onchange="console.log('Email notifications toggled to: ' + this.checked)">
         </div>
         <div class="setting-item">
-          <label for="notification-sms-toggle">SMS Notifications:</label>
+          <label for="notification-sms-toggle" data-key="smsNotificationsLabel">SMS Notifications:</label>
           <input type="checkbox" id="notification-sms-toggle" onchange="console.log('SMS notifications toggled to: ' + this.checked)">
         </div>
         <div class="setting-item">
-            <label for="time-zone-select">Time Zone:</label>
+            <label for="time-zone-select" data-key="timeZoneLabel">Time Zone:</label>
             <select id="time-zone-select" onchange="console.log('Time zone changed to: ' + this.value)">
-                <option value="Asia/Kathmandu">Kathmandu (GMT+05:45)</option>
-                <option value="America/New_York">New York (EST)</option>
+                <option value="Asia/Kathmandu" data-key="timezoneKathmandu">Kathmandu (GMT+05:45)</option>
+                <option value="America/New_York" data-key="timezoneNewYork">New York (EST)</option>
                 </select>
         </div>
         <div class="setting-item">
-            <label for="data-refresh-rate">Data Refresh Rate:</label>
+            <label for="data-refresh-rate" data-key="dataRefreshRateLabel">Data Refresh Rate:</label>
             <select id="data-refresh-rate" onchange="console.log('Data refresh rate changed to: ' + this.value)">
-                <option value="auto">Automatic</option>
-                <option value="manual">Manual</option>
+                <option value="auto" data-key="refreshAuto">Automatic</option>
+                <option value="manual" data-key="refreshManual">Manual</option>
             </select>
         </div>
-        <button class="save-settings-btn" data-category="User Preferences"><i class="fas fa-save"></i> Save Preferences</button>
+        <button class="save-settings-btn" data-category="User Preferences" data-key="savePrefsButton"><i class="fas fa-save"></i> Save Preferences</button>
       </div>
 
       <div id="account-settings" class="settings-content">
-        <h3>Account Settings</h3>
+        <h3 data-key="accountSettingsSubheading">Account Settings</h3>
         <div class="setting-item">
-            <label for="profile-name">Name:</label>
+            <label for="profile-name" data-key="profileNameLabel">Name:</label>
             <input type="text" id="profile-name" value="User Name" onchange="console.log('Profile name changed to: ' + this.value)">
         </div>
         <div class="setting-item">
-            <label for="profile-email">Email:</label>
+            <label for="profile-email" data-key="profileEmailLabel">Email:</label>
             <input type="email" id="profile-email" value="user@example.com" disabled>
         </div>
         <div class="setting-item">
-            <label>Password & Security:</label>
-            <button class="btn-small" onclick="console.log('Change Password clicked');">Change Password</button>
-            <button class="btn-small" onclick="console.log('Enable 2FA clicked');">Enable 2FA</button>
+            <label data-key="passwordSecurityLabel">Password & Security:</label>
+            <button class="btn-small" onclick="console.log('Change Password clicked');" data-key="changePasswordButton">Change Password</button>
+            <button class="btn-small" onclick="console.log('Enable 2FA clicked');" data-key="enable2FAButton">Enable 2FA</button>
         </div>
         <div class="setting-item">
-            <label>Privacy Controls:</label>
-            <button class="btn-small" onclick="console.log('Manage Data Sharing clicked');">Manage Data Sharing</button>
+            <label data-key="privacyControlsLabel">Privacy Controls:</label>
+            <button class="btn-small" onclick="console.log('Manage Data Sharing clicked');" data-key="manageDataSharingButton">Manage Data Sharing</button>
         </div>
-        <button class="save-settings-btn" data-category="Account Settings"><i class="fas fa-save"></i> Save Account Settings</button>
+        <button class="save-settings-btn" data-category="Account Settings" data-key="saveAccountSettingsButton"><i class="fas fa-save"></i> Save Account Settings</button>
       </div>
 
       <div id="customization" class="settings-content">
-        <h3>Customization</h3>
+        <h3 data-key="customizationSubheading">Customization</h3>
         <div class="setting-item">
-            <label for="widget-layout">Widget Layout:</label>
-            <button class="btn-small" onclick="console.log('Drag & Drop Editor opened');">Drag & Drop Editor</button>
+            <label for="widget-layout" data-key="widgetLayoutLabel">Widget Layout:</label>
+            <button class="btn-small" onclick="console.log('Drag & Drop Editor opened');" data-key="dragDropEditorButton">Drag & Drop Editor</button>
         </div>
         <div class="setting-item">
-            <label for="default-landing-page">Default Landing Page:</label>
+            <label for="default-landing-page" data-key="defaultLandingPageLabel">Default Landing Page:</label>
             <select id="default-landing-page" onchange="console.log('Default landing page changed to: ' + this.value)">
-                <option value="home">Home Dashboard</option>
-                <option value="chat">Chat with AI</option>
-                <option value="trends">Medical Trends</option>
+                <option value="home" data-key="landingHome">Home Dashboard</option>
+                <option value="chat" data-key="landingChat">Chat with AI</option>
+                <option value="trends" data-key="landingTrends">Medical Trends</option>
             </select>
         </div>
-        <button class="save-settings-btn" data-category="Customization"><i class="fas fa-save"></i> Save Customizations</button>
+        <button class="save-settings-btn" data-category="Customization" data-key="saveCustomizationsButton"><i class="fas fa-save"></i> Save Customizations</button>
       </div>
 
       <div id="system-settings" class="settings-content">
-        <h3>System Settings</h3>
+        <h3 data-key="systemSettingsSubheading">System Settings</h3>
         <div class="setting-item">
-            <label>Role & Permissions:</label>
-            <p>Admin access required.</p>
+            <label data-key="rolePermissionsLabel">Role & Permissions:</label>
+            <p data-key="adminAccessRequired">Admin access required.</p>
         </div>
         <div class="setting-item">
-            <label>Backup & Restore:</label>
-            <button class="btn-small" onclick="console.log('Create Backup clicked');">Create Backup</button>
-            <button class="btn-small" onclick="console.log('Restore from Backup clicked');">Restore from Backup</button>
+            <label data-key="backupRestoreLabel">Backup & Restore:</label>
+            <button class="btn-small" onclick="console.log('Create Backup clicked');" data-key="createBackupButton">Create Backup</button>
+            <button class="btn-small" onclick="console.log('Restore from Backup clicked');" data-key="restoreBackupButton">Restore from Backup</button>
         </div>
         <div class="setting-item">
-            <label>Version Info:</label>
-            <span>v1.0.0 (Build 20250705)</span>
+            <label data-key="versionInfoLabel">Version Info:</label>
+            <span data-key="versionNumber">v1.0.0 (Build 20250705)</span>
         </div>
       </div>
     </div>
 
     <div id="integrations-panel" class="settings-panel" style="display: none;">
-        <h2><i class="fas fa-puzzle-piece"></i> Integrations</h2>
-        <p>Connect Swastha AI with your favorite third-party applications.</p>
+        <h2 data-key="integrationsPanelHeading"><i class="fas fa-puzzle-piece"></i> Integrations</h2>
+        <p data-key="integrationsParagraph">Connect Swastha AI with your favorite third-party applications.</p>
         <div class="integration-item">
-            <h3>Google Analytics</h3>
-            <p>Connect to view your website traffic data.</p>
-            <button class="btn-small" onclick="console.log('Connect Google Analytics clicked');">Connect</button>
+            <h3 data-key="googleAnalyticsHeading">Google Analytics</h3>
+            <p data-key="googleAnalyticsDesc">Connect to view your website traffic data.</p>
+            <button class="btn-small" onclick="console.log('Connect Google Analytics clicked');" data-key="connectButton">Connect</button>
         </div>
         <div class="integration-item">
-            <h3>Stripe (Payments)</h3>
-            <p>Integrate for payment processing.</p>
-            <button class="btn-small" onclick="console.log('Connect Stripe clicked');">Connect</button>
+            <h3 data-key="stripeHeading">Stripe (Payments)</h3>
+            <p data-key="stripeDesc">Integrate for payment processing.</p>
+            <button class="btn-small" onclick="console.log('Connect Stripe clicked');" data-key="connectButton">Connect</button>
         </div>
         <div class="integration-item">
-            <h3>Slack / Teams</h3>
-            <p>Receive notifications and alerts directly.</p>
-            <button class="btn-small" onclick="console.log('Connect Slack/Teams clicked');">Connect</button>
+            <h3 data-key="slackTeamsHeading">Slack / Teams</h3>
+            <p data-key="slackTeamsDesc">Receive notifications and alerts directly.</p>
+            <button class="btn-small" onclick="console.log('Connect Slack/Teams clicked');" data-key="connectButton">Connect</button>
         </div>
     </div>
 
     <div id="security-panel" class="settings-panel" style="display: none;">
-        <h2><i class="fas fa-shield-alt"></i> Security & Access</h2>
-        <p>Manage security settings and review access logs.</p>
+        <h2 data-key="securityPanelHeading"><i class="fas fa-shield-alt"></i> Security & Access</h2>
+        <p data-key="securityParagraph">Manage security settings and review access logs.</p>
         <div class="security-item">
-            <h3>Audit Logs</h3>
-            <p>Review all system activities and changes.</p>
-            <button class="btn-small" onclick="console.log('View Audit Logs clicked');">View Logs</button>
+            <h3 data-key="auditLogsHeading">Audit Logs</h3>
+            <p data-key="auditLogsDesc">Review all system activities and changes.</p>
+            <button class="btn-small" onclick="console.log('View Audit Logs clicked');" data-key="viewLogsButton">View Logs</button>
         </div>
         <div class="security-item">
-            <h3>Session Management</h3>
-            <p>See active sessions and log out devices.</p>
-            <button class="btn-small" onclick="console.log('Manage Sessions clicked');">Manage Sessions</button>
+            <h3 data-key="sessionManagementHeading">Session Management</h3>
+            <p data-key="sessionManagementDesc">See active sessions and log out devices.</p>
+            <button class="btn-small" onclick="console.log('Manage Sessions clicked');" data-key="manageSessionsButton">Manage Sessions</button>
         </div>
         <div class="security-item">
-            <h3>User Roles</h3>
-            <p>Define and manage user roles and permissions.</p>
-            <button class="btn-small" onclick="console.log('Manage User Roles clicked');">Manage Roles</button>
+            <h3 data-key="userRolesHeading">User Roles</h3>
+            <p data-key="userRolesDesc">Define and manage user roles and permissions.</p>
+            <button class="btn-small" onclick="console.log('Manage User Roles clicked');" data-key="manageRolesButton">Manage Roles</button>
         </div>
     </div>
-
-
   </div>
 
   <div id="membership-popup" class="popup-overlay" style="display:none;">
     <div class="popup-content">
-      <h3>Membership Required</h3>
-      <p>Please upgrade your membership to access this feature.</p>
-      <button onclick="closeMembershipPopup()">Close</button>
+      <h3 data-key="membershipRequiredHeading">Membership Required</h3>
+      <p data-key="membershipRequiredParagraph">Please upgrade your membership to access this feature.</p>
+      <button onclick="closeMembershipPopup()" data-key="closeButton">Close</button>
     </div>
   </div>
 
   <script type="module" src="dashboard.js"></script>
-  <script type="module">
+  <script src="dashboard-translation.js"></script> <script type="module">
     // Import auth for logout
     import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
     const auth = getAuth();
@@ -305,16 +305,23 @@
 
     window.askDoctor = function() {
       document.getElementById("membership-popup").style.display = "flex";
+      // Ensure the text within the popup is translated when it appears
+      updatePopupContent('membership-popup', {
+          heading: 'membershipRequiredHeading',
+          paragraph: 'membershipRequiredParagraph',
+          button: 'closeButton'
+      });
     };
 
     window.closeMembershipPopup = function() {
       document.getElementById("membership-popup").style.display = "none";
     };
 
-    window.changeLanguage = function(lang) {
-      console.log(`Language changed to: ${lang}`);
-      // Add logic here to change UI language dynamically
-    };
+    // The setLanguage function is now handled by dashboard-translation.js
+    // window.changeLanguage = function(lang) {
+    //   console.log(`Language changed to: ${lang}`);
+    //   // Add logic here to change UI language dynamically
+    // };
 
     window.sendMessage = function() {
       const chatInput = document.getElementById('chat-input');
@@ -322,15 +329,18 @@
       const message = chatInput.value.trim();
 
       if (message) {
-        responseDiv.textContent = `You: ${message}\nSwastha AI: Processing your request...`;
+        // Use translation for initial response
+        responseDiv.textContent = `${getTranslation('youLabel')}: ${message}\n${getTranslation('swasthaAILabel')}: ${getTranslation('processingRequest')}`;
         chatInput.value = ''; // Clear input
 
         // Simulate AI response after a delay
         setTimeout(() => {
-          responseDiv.textContent = `You: ${message}\nSwastha AI: Thank you for providing your symptoms. Based on "headache and dizziness", it could be due to various reasons like dehydration, stress, or even a migraine. If symptoms persist or worsen, please consult a medical professional directly.`;
+          // Use translation for simulated AI response
+          responseDiv.textContent = `${getTranslation('youLabel')}: ${message}\n${getTranslation('swasthaAILabel')}: ${getTranslation('aiResponseHeadacheDizzy')}`;
         }, 2000);
       } else {
-        responseDiv.textContent = "Swastha AI: Please type your symptoms to get assistance.";
+        // Use translation for empty input message
+        responseDiv.textContent = `${getTranslation('swasthaAILabel')}: ${getTranslation('pleaseTypeSymptoms')}`;
       }
     };
 
@@ -342,7 +352,7 @@
         window.location.href = "../index.html"; // Redirect to login page
       } catch (error) {
         console.error("Logout Error:", error);
-        alert("Failed to logout: " + error.message);
+        alert(`${getTranslation('logoutFailed')}: ${error.message}`); // Translate alert message
       }
     });
 
@@ -371,40 +381,40 @@
     const integrationsPanel = document.getElementById('integrations-panel');
     const securityPanel = document.getElementById('security-panel');
 
-    function showPanel(panelToShow) {
+    function showPanel(panelToShow, sidebarItemId) {
         dashboardContent.style.display = 'none';
         settingsPanel.style.display = 'none';
         integrationsPanel.style.display = 'none';
         securityPanel.style.display = 'none';
         if (panelToShow) {
             panelToShow.style.display = 'block';
+        } else {
+            dashboardContent.style.display = 'grid'; // Restore grid display for dashboard
         }
         document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+        if (sidebarItemId) {
+            document.getElementById(sidebarItemId).classList.add('active');
+        }
     }
 
     document.getElementById('home-sidebar-item').addEventListener('click', function(e) {
         e.preventDefault();
-        showPanel(null); // Show dashboard content
-        dashboardContent.style.display = 'grid'; // Restore grid display for dashboard
-        this.classList.add('active');
+        showPanel(null, 'home-sidebar-item');
     });
 
     document.getElementById('settings-sidebar-item').addEventListener('click', function(e) {
         e.preventDefault();
-        showPanel(settingsPanel);
-        this.classList.add('active');
+        showPanel(settingsPanel, 'settings-sidebar-item');
     });
 
     document.getElementById('integrations-sidebar-item').addEventListener('click', function(e) {
         e.preventDefault();
-        showPanel(integrationsPanel);
-        this.classList.add('active');
+        showPanel(integrationsPanel, 'integrations-sidebar-item');
     });
 
     document.getElementById('security-sidebar-item').addEventListener('click', function(e) {
         e.preventDefault();
-        showPanel(securityPanel);
-        this.classList.add('active');
+        showPanel(securityPanel, 'security-sidebar-item');
     });
 
 
@@ -469,8 +479,9 @@
     document.querySelectorAll('.save-settings-btn').forEach(button => {
         button.addEventListener('click', () => {
             const category = button.dataset.category;
+            // Use translation for the alert message
+            alert(`${getTranslation('settingsSavedPrefix')} ${getTranslation(category.replace(/\s/g, ''))}${getTranslation('settingsSavedSuffix')}`);
             console.log(`Settings saved for ${category}! (Functionality to save to backend/storage would go here)`);
-            alert(`Settings saved for ${category}!`); // Provide user feedback
         });
     });
 
