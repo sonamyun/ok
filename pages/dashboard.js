@@ -5,11 +5,12 @@ import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/
 // Check if user is authenticated
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    document.getElementById("user-email").textContent = user.email;
-    document.getElementById("auth-type").textContent = user.providerData[0].providerId;
+    document.getElementById("user-email").textContent = user.email; // For header display
+    document.getElementById("email-stat").textContent = user.email; // For user stats card
+    document.getElementById("authType-stat").textContent = user.providerData[0].providerId; // For user stats card
+    // You can add logic here to fetch and display total users from your backend/Firestore
   } else {
-    // Redirect to login if not signed in
-    window.location.href = "../index.html"; 
+    window.location.href = "../index.html"; // Redirect to login if not signed in
   }
 });
 

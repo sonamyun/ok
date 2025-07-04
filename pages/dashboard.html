@@ -3,55 +3,477 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-lang="dashboardTitle">Swastha AI Dashboard</title>
+  <title>Swastha AI Dashboard</title>
   <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body data-page-title="dashboardTitle">
+<body>
   <div class="sidebar">
-    <i class="home-icon">🏠</i>
-  </div>
+    <a href="#" class="sidebar-item active" id="home-sidebar-item">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="#" class="sidebar-item" id="settings-sidebar-item">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+    <a href="#" class="sidebar-item" id="integrations-sidebar-item">
+        <i class="fas fa-puzzle-piece"></i>
+        <span>Integrations</span>
+    </a>
+    <a href="#" class="sidebar-item" id="security-sidebar-item">
+        <i class="fas fa-shield-alt"></i>
+        <span>Security</span>
+    </a>
+    </div>
   <div class="main">
     <header>
-      <h1 data-lang="dashboardTitle">Swastha AI Dashboard</h1>
-      <div>
-        <select id="language-selector">
+      <div class="header-left">
+        <h1>Swastha AI Dashboard</h1>
+        <div class="search-bar">
+          <input type="text" placeholder="Global Search..." oninput="console.log('Searching: ' + this.value)" />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+      <div class="header-right">
+        <select id="language-select" onchange="changeLanguage(this.value)">
           <option value="en">English</option>
-          <option value="ne">नेपाली</option>
-        </select>
-        <button id="logout-btn" class="logout-btn" data-lang="logout">Logout</button>
+          <option value="ne">Nepali</option>
+          </select>
+        <div class="user-menu">
+          <span id="user-email">Loading...</span> <i class="fas fa-user-circle user-icon"></i>
+          <div class="user-dropdown-content">
+            <a href="#" id="profile-link" onclick="console.log('Profile link clicked');"><i class="fas fa-user-alt"></i> Profile</a>
+            <a href="#" id="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
       </div>
     </header>
-    <section class="stats">
-      <h2 data-lang="userStats">User Stats</h2>
-      <p><strong data-lang="emailLabel">Email:</strong> <span id="user-email" data-lang="loading">Loading...</span></p>
-      <p><strong data-lang="authTypeLabel">Auth Type:</strong> <span id="auth-type" data-lang="loading">Loading...</span></p>
-    </section>
-    <section class="trends">
-      <h2 data-lang="medicalTrends">Medical Trends</h2>
-      <p data-lang="trendsMsg">Recent health-related insights and updates.</p>
-    </section>
-    <section class="actions">
-      <button id="ask-help" class="btn help" data-lang="askHelp">Ask Help</button>
-      <button id="locate" class="btn locate" data-lang="locate">Locate</button>
-      <button id="ask-doctor" class="btn doctor" data-lang="askDoctor">Ask Doctor</button>
-    </section>
-    <section class="chatbox">
-      <input type="text" data-lang="symptomsPlaceholder" placeholder="Describe your medical symptoms..." />
-      <button class="submit-btn" data-lang="submit">Submit</button>
-      <div class="response" data-lang="aiResponse">Swastha AI: Sorry, the AI could not respond properly.</div>
-    </section>
+
+    <div class="dashboard-content" id="dashboard-content">
+      <div class="dashboard-grid">
+        <section class="stats card">
+          <h2>User Stats</h2>
+          <p>Email: <span id="email-stat">Loading...</span></p>
+          <p>Auth Type: <span id="authType-stat">Loading...</span></p>
+          <p>Total Users: <span id="totalUsers-stat">N/A</span></p> <p>Active Users: <span id="activeUsers-stat">N/A</span></p> </section>
+
+        <section class="trends card">
+          <h2>Medical Trends</h2>
+          <p>Recent health-related insights and updates. Stay informed about the latest in healthcare.</p>
+          <ul>
+            <li>Increased flu cases reported in Bagmati Province.</li>
+            <li>New guidelines for diabetes management published.</li>
+            <li>Telemedicine adoption growing.</li>
+          </ul>
+        </section>
+
+        <section class="quick-actions card">
+          <h2>Quick Actions</h2>
+          <div class="action-buttons">
+            <button class="btn help" onclick="redirectHelp()">
+              <i class="fas fa-medkit"></i> Ask Help
+            </button>
+            <button class="btn locate" onclick="redirectLocate()">
+              <i class="fas fa-map-marker-alt"></i> Locate
+            </button>
+            <button class="btn doctor" onclick="askDoctor()">
+              <i class="fas fa-user-md"></i> Ask Doctor
+            </button>
+          </div>
+        </section>
+
+        <section class="chatbox card">
+          <h2>Chat with Swastha AI</h2>
+          <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Describe your medical symptoms (e.g., I have a headache and feel dizzy)..." />
+            <button class="submit-btn" onclick="sendMessage()">Send</button>
+          </div>
+          <div class="response">Swastha AI: Type your symptoms above to get assistance.</div>
+          <div class="smart-features">
+              <p class="small-text"><i class="fas fa-lightbulb"></i> Smart suggestions: "Your traffic is 20% lower than usual on Wednesdays."</p>
+              <button class="export-btn" onclick="console.log('Export chat clicked');"><i class="fas fa-file-export"></i> Export Chat (PDF)</button>
+          </div>
+        </section>
+
+        <section class="to-do-list card">
+            <h2><i class="fas fa-clipboard-list"></i> To-Do List</h2>
+            <ul>
+              <li>Schedule annual check-up</li>
+              <li>Research healthy recipes</li>
+              <li>Exercise for 30 minutes</li>
+            </ul>
+        </section>
+
+        <section class="calendar card">
+            <h2><i class="fas fa-calendar-alt"></i> Calendar</h2>
+            <p>Today: No special events. <br> Upcoming: Dental appointment (July 10).</p>
+        </section>
+
+        <section class="notifications card">
+            <h2><i class="fas fa-bell"></i> Notifications</h2>
+            <ul>
+              <li>New message from Dr. Sharma.</li>
+              <li>Reminder: Take medication at 8 PM.</li>
+            </ul>
+        </section>
+
+        <section class="kpi-card card">
+            <h2><i class="fas fa-tachometer-alt"></i> Health Score</h2>
+            <div class="progress-ring-container">
+                <div class="progress-ring" data-progress="75">
+                    <svg class="progress-svg" viewBox="0 0 100 100">
+                        <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                        <circle class="progress-bar" cx="50" cy="50" r="45"></circle>
+                    </svg>
+                    <div class="progress-text">75%</div>
+                </div>
+                <p>Overall Health Index</p>
+            </div>
+        </section>
+
+      </div>
+    </div>
+
+    <div id="settings-panel" class="settings-panel" style="display: none;">
+      <h2><i class="fas fa-cog"></i> Settings</h2>
+      <div class="settings-tabs">
+        <button class="settings-tab active" data-tab="user-prefs">User Preferences</button>
+        <button class="settings-tab" data-tab="account-settings">Account Settings</button>
+        <button class="settings-tab" data-tab="customization">Customization</button>
+        <button class="settings-tab" data-tab="system-settings">System Settings</button>
+      </div>
+
+      <div id="user-prefs" class="settings-content active">
+        <h3>User Preferences</h3>
+        <div class="setting-item">
+          <label for="theme-select">Theme:</label>
+          <select id="theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="auto">Auto</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <label for="notification-email-toggle">Email Notifications:</label>
+          <input type="checkbox" id="notification-email-toggle" onchange="console.log('Email notifications toggled to: ' + this.checked)">
+        </div>
+        <div class="setting-item">
+          <label for="notification-sms-toggle">SMS Notifications:</label>
+          <input type="checkbox" id="notification-sms-toggle" onchange="console.log('SMS notifications toggled to: ' + this.checked)">
+        </div>
+        <div class="setting-item">
+            <label for="time-zone-select">Time Zone:</label>
+            <select id="time-zone-select" onchange="console.log('Time zone changed to: ' + this.value)">
+                <option value="Asia/Kathmandu">Kathmandu (GMT+05:45)</option>
+                <option value="America/New_York">New York (EST)</option>
+                </select>
+        </div>
+        <div class="setting-item">
+            <label for="data-refresh-rate">Data Refresh Rate:</label>
+            <select id="data-refresh-rate" onchange="console.log('Data refresh rate changed to: ' + this.value)">
+                <option value="auto">Automatic</option>
+                <option value="manual">Manual</option>
+            </select>
+        </div>
+        <button class="save-settings-btn" data-category="User Preferences"><i class="fas fa-save"></i> Save Preferences</button>
+      </div>
+
+      <div id="account-settings" class="settings-content">
+        <h3>Account Settings</h3>
+        <div class="setting-item">
+            <label for="profile-name">Name:</label>
+            <input type="text" id="profile-name" value="User Name" onchange="console.log('Profile name changed to: ' + this.value)">
+        </div>
+        <div class="setting-item">
+            <label for="profile-email">Email:</label>
+            <input type="email" id="profile-email" value="user@example.com" disabled>
+        </div>
+        <div class="setting-item">
+            <label>Password & Security:</label>
+            <button class="btn-small" onclick="console.log('Change Password clicked');">Change Password</button>
+            <button class="btn-small" onclick="console.log('Enable 2FA clicked');">Enable 2FA</button>
+        </div>
+        <div class="setting-item">
+            <label>Privacy Controls:</label>
+            <button class="btn-small" onclick="console.log('Manage Data Sharing clicked');">Manage Data Sharing</button>
+        </div>
+        <button class="save-settings-btn" data-category="Account Settings"><i class="fas fa-save"></i> Save Account Settings</button>
+      </div>
+
+      <div id="customization" class="settings-content">
+        <h3>Customization</h3>
+        <div class="setting-item">
+            <label for="widget-layout">Widget Layout:</label>
+            <button class="btn-small" onclick="console.log('Drag & Drop Editor opened');">Drag & Drop Editor</button>
+        </div>
+        <div class="setting-item">
+            <label for="default-landing-page">Default Landing Page:</label>
+            <select id="default-landing-page" onchange="console.log('Default landing page changed to: ' + this.value)">
+                <option value="home">Home Dashboard</option>
+                <option value="chat">Chat with AI</option>
+                <option value="trends">Medical Trends</option>
+            </select>
+        </div>
+        <button class="save-settings-btn" data-category="Customization"><i class="fas fa-save"></i> Save Customizations</button>
+      </div>
+
+      <div id="system-settings" class="settings-content">
+        <h3>System Settings</h3>
+        <div class="setting-item">
+            <label>Role & Permissions:</label>
+            <p>Admin access required.</p>
+        </div>
+        <div class="setting-item">
+            <label>Backup & Restore:</label>
+            <button class="btn-small" onclick="console.log('Create Backup clicked');">Create Backup</button>
+            <button class="btn-small" onclick="console.log('Restore from Backup clicked');">Restore from Backup</button>
+        </div>
+        <div class="setting-item">
+            <label>Version Info:</label>
+            <span>v1.0.0 (Build 20250705)</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="integrations-panel" class="settings-panel" style="display: none;">
+        <h2><i class="fas fa-puzzle-piece"></i> Integrations</h2>
+        <p>Connect Swastha AI with your favorite third-party applications.</p>
+        <div class="integration-item">
+            <h3>Google Analytics</h3>
+            <p>Connect to view your website traffic data.</p>
+            <button class="btn-small" onclick="console.log('Connect Google Analytics clicked');">Connect</button>
+        </div>
+        <div class="integration-item">
+            <h3>Stripe (Payments)</h3>
+            <p>Integrate for payment processing.</p>
+            <button class="btn-small" onclick="console.log('Connect Stripe clicked');">Connect</button>
+        </div>
+        <div class="integration-item">
+            <h3>Slack / Teams</h3>
+            <p>Receive notifications and alerts directly.</p>
+            <button class="btn-small" onclick="console.log('Connect Slack/Teams clicked');">Connect</button>
+        </div>
+    </div>
+
+    <div id="security-panel" class="settings-panel" style="display: none;">
+        <h2><i class="fas fa-shield-alt"></i> Security & Access</h2>
+        <p>Manage security settings and review access logs.</p>
+        <div class="security-item">
+            <h3>Audit Logs</h3>
+            <p>Review all system activities and changes.</p>
+            <button class="btn-small" onclick="console.log('View Audit Logs clicked');">View Logs</button>
+        </div>
+        <div class="security-item">
+            <h3>Session Management</h3>
+            <p>See active sessions and log out devices.</p>
+            <button class="btn-small" onclick="console.log('Manage Sessions clicked');">Manage Sessions</button>
+        </div>
+        <div class="security-item">
+            <h3>User Roles</h3>
+            <p>Define and manage user roles and permissions.</p>
+            <button class="btn-small" onclick="console.log('Manage User Roles clicked');">Manage Roles</button>
+        </div>
+    </div>
+
+
   </div>
 
-  <div id="membership-popup" class="popup-container">
+  <div id="membership-popup" class="popup-overlay" style="display:none;">
     <div class="popup-content">
-      <h2 data-lang="membershipTitle">Doctor Consultation</h2>
-      <p data-lang="membershipMsg">This feature requires a premium membership. Please contact support to upgrade your plan.</p>
-      <button id="close-popup-btn" data-lang="close">Close</button>
+      <h3>Membership Required</h3>
+      <p>Please upgrade your membership to access this feature.</p>
+      <button onclick="closeMembershipPopup()">Close</button>
     </div>
   </div>
 
-  <script type="module" src="../firebase-auth.js"></script>
   <script type="module" src="dashboard.js"></script>
-  <script src="../languages.js"></script>
+  <script type="module">
+    // Import auth for logout
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    const auth = getAuth();
+
+    // General utility functions for dashboard.html
+    window.redirectHelp = function() {
+      window.location.href = "emergency.html"; // Adjusted path to assume dashboard.html is in same directory
+    };
+
+    window.redirectLocate = function() {
+      const location = encodeURIComponent("hospitals near Mahalaxmi Lalitpur Cosmos College Block B");
+      window.open(`https://www.google.com/maps/search/?api=1&query=${location}`, "_blank"); // Corrected Google Maps URL
+    };
+
+    window.askDoctor = function() {
+      document.getElementById("membership-popup").style.display = "flex";
+    };
+
+    window.closeMembershipPopup = function() {
+      document.getElementById("membership-popup").style.display = "none";
+    };
+
+    window.changeLanguage = function(lang) {
+      console.log(`Language changed to: ${lang}`);
+      // Add logic here to change UI language dynamically
+    };
+
+    window.sendMessage = function() {
+      const chatInput = document.getElementById('chat-input');
+      const responseDiv = document.querySelector('.chatbox .response');
+      const message = chatInput.value.trim();
+
+      if (message) {
+        responseDiv.textContent = `You: ${message}\nSwastha AI: Processing your request...`;
+        chatInput.value = ''; // Clear input
+
+        // Simulate AI response after a delay
+        setTimeout(() => {
+          responseDiv.textContent = `You: ${message}\nSwastha AI: Thank you for providing your symptoms. Based on "headache and dizziness", it could be due to various reasons like dehydration, stress, or even a migraine. If symptoms persist or worsen, please consult a medical professional directly.`;
+        }, 2000);
+      } else {
+        responseDiv.textContent = "Swastha AI: Please type your symptoms to get assistance.";
+      }
+    };
+
+    // Logout Function
+    document.getElementById("logout-button")?.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        await signOut(auth);
+        window.location.href = "../index.html"; // Redirect to login page
+      } catch (error) {
+        console.error("Logout Error:", error);
+        alert("Failed to logout: " + error.message);
+      }
+    });
+
+    // Toggle user dropdown menu
+    document.querySelector('.user-icon').addEventListener('click', function(event) {
+      event.stopPropagation(); // Prevent click from immediately closing the dropdown
+      this.nextElementSibling.classList.toggle('show');
+    });
+
+    // Close the dropdown if the user clicks outside of it
+    window.addEventListener('click', function(event) {
+      if (!event.target.closest('.user-menu')) {
+        var dropdowns = document.getElementsByClassName("user-dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    });
+
+    // Settings/Integrations/Security Panel Toggling
+    const dashboardContent = document.getElementById('dashboard-content');
+    const settingsPanel = document.getElementById('settings-panel');
+    const integrationsPanel = document.getElementById('integrations-panel');
+    const securityPanel = document.getElementById('security-panel');
+
+    function showPanel(panelToShow) {
+        dashboardContent.style.display = 'none';
+        settingsPanel.style.display = 'none';
+        integrationsPanel.style.display = 'none';
+        securityPanel.style.display = 'none';
+        if (panelToShow) {
+            panelToShow.style.display = 'block';
+        }
+        document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+    }
+
+    document.getElementById('home-sidebar-item').addEventListener('click', function(e) {
+        e.preventDefault();
+        showPanel(null); // Show dashboard content
+        dashboardContent.style.display = 'grid'; // Restore grid display for dashboard
+        this.classList.add('active');
+    });
+
+    document.getElementById('settings-sidebar-item').addEventListener('click', function(e) {
+        e.preventDefault();
+        showPanel(settingsPanel);
+        this.classList.add('active');
+    });
+
+    document.getElementById('integrations-sidebar-item').addEventListener('click', function(e) {
+        e.preventDefault();
+        showPanel(integrationsPanel);
+        this.classList.add('active');
+    });
+
+    document.getElementById('security-sidebar-item').addEventListener('click', function(e) {
+        e.preventDefault();
+        showPanel(securityPanel);
+        this.classList.add('active');
+    });
+
+
+    // Settings Tabs Logic
+    document.querySelectorAll('.settings-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.settings-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            document.querySelectorAll('.settings-content').forEach(content => content.style.display = 'none');
+            document.getElementById(this.dataset.tab).style.display = 'block';
+        });
+    });
+
+    // Progress Ring Initialization
+    document.querySelectorAll('.progress-ring').forEach(ring => {
+        const progress = ring.dataset.progress; // Get progress from data-progress attribute
+        const radius = 45; // Hardcoded from SVG
+        const circumference = 2 * Math.PI * radius;
+        const offset = circumference - (progress / 100) * circumference;
+        const progressBar = ring.querySelector('.progress-bar');
+        const progressText = ring.querySelector('.progress-text');
+
+        progressBar.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressBar.style.strokeDashoffset = offset;
+        progressBar.style.transition = 'stroke-dashoffset 0.8s ease-out'; // Animation
+
+        progressText.textContent = `${progress}%`;
+    });
+
+
+    // --- Theme Switcher Functionality ---
+    const themeSelect = document.getElementById('theme-select');
+
+    function applyTheme(theme) {
+        document.body.classList.remove('light-theme', 'dark-theme'); // Remove existing themes
+
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+        } else if (theme === 'light') {
+            document.body.classList.add('light-theme');
+        } else if (theme === 'auto') {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.add('light-theme');
+            }
+        }
+        localStorage.setItem('selectedTheme', theme); // Save preference
+    }
+
+    // Load theme on page load
+    const savedTheme = localStorage.getItem('selectedTheme') || 'light'; // Default to light if no preference
+    themeSelect.value = savedTheme; // Set dropdown to saved value
+    applyTheme(savedTheme); // Apply the theme
+
+
+    themeSelect.addEventListener('change', (event) => {
+        applyTheme(event.target.value);
+    });
+
+    // --- Settings Save Buttons Functionality ---
+    document.querySelectorAll('.save-settings-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.category;
+            console.log(`Settings saved for ${category}! (Functionality to save to backend/storage would go here)`);
+            alert(`Settings saved for ${category}!`); // Provide user feedback
+        });
+    });
+
+  </script>
 </body>
 </html>
