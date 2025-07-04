@@ -2,39 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title data-lang="emergencyTitle">Emergency Helpline</title>
+  <title>Emergency Helpline</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="dashboard.css">
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
       padding: 40px;
       background-color: #f7f7f7;
       color: #333;
-      display: block; /* Override flex display from dashboard.css */
+      display: flex; /* Added for centering */
+      justify-content: center; /* Added for centering */
+      align-items: center; /* Added for centering */
+      min-height: 100vh; /* Added to take full viewport height for centering */
+      margin: 0; /* Remove default body margin */
+    }
+    .container { /* New container for centering content */
+      text-align: center;
+      max-width: 600px; /* Optional: Limit width for better readability */
+      width: 100%;
     }
     h1 {
       color: #FF4B2B;
     }
     ul {
-      list-style-type: none;
-      padding: 0;
+      list-style: none; /* Remove bullet points */
+      padding: 0; /* Remove default padding */
       margin-top: 20px;
     }
     li {
       margin-bottom: 15px;
-      font-size: 1.2rem;
     }
   </style>
 </head>
-<body data-page-title="emergencyTitle">
-  <h1 data-lang="emergencyTitle">🚨 Emergency Medical Helplines</h1>
-  <ul>
-    <li><strong data-lang="ambulance">Ambulance:</strong> 102</li>
-    <li><strong data-lang="covidHelpline">COVID Helpline:</strong> 1133</li>
-    <li><strong data-lang="lalitpurHospital">Lalitpur District Hospital:</strong> +977-1-554-4002</li>
-    <li><strong data-lang="patanHospital">Patan Hospital Emergency:</strong> +977-1-552-2295</li>
-  </ul>
-  <script src="../languages.js"></script>
+<body>
+  <div class="container">
+    <h1>🚨 Emergency Medical Helplines</h1>
+    <ul>
+      <li><strong>Ambulance:</strong> 102</li>
+      <li><strong>COVID Helpline:</strong> 1133</li>
+      <li><strong>Lalitpur District Hospital:</strong> +977-1-554-4002</li>
+      <li><strong>Patan Hospital Emergency:</strong> +977-1-552-2295</li>
+    </ul>
+  </div>
 </body>
 </html>
