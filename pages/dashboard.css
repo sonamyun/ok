@@ -29,6 +29,22 @@ header {
   align-items: center;
 }
 
+header h1 {
+  margin: 0;
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+header #language-selector {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
 .logout-btn {
   background: red;
   color: white;
@@ -78,11 +94,48 @@ section {
   color: white;
   border: none;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .response {
   margin-top: 10px;
-  background-color: #fff;
+  background-color: #f0f0f0;
   padding: 10px;
   border-radius: 6px;
+}
+
+/* Popup Styles */
+.popup-container {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup-content button {
+    background-color: #FF4B2B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
 }

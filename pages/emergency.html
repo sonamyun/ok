@@ -2,33 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Emergency Helpline</title>
+  <title data-lang="emergencyTitle">Emergency Helpline</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
       padding: 40px;
       background-color: #f7f7f7;
       color: #333;
+      display: block; /* Override flex display from dashboard.css */
     }
     h1 {
       color: #FF4B2B;
     }
     ul {
+      list-style-type: none;
+      padding: 0;
       margin-top: 20px;
     }
     li {
       margin-bottom: 15px;
+      font-size: 1.2rem;
     }
   </style>
 </head>
-<body>
-  <h1>🚨 Emergency Medical Helplines</h1>
+<body data-page-title="emergencyTitle">
+  <h1 data-lang="emergencyTitle">🚨 Emergency Medical Helplines</h1>
   <ul>
-    <li><strong>Ambulance:</strong> 102</li>
-    <li><strong>COVID Helpline:</strong> 1133</li>
-    <li><strong>Lalitpur District Hospital:</strong> +977-1-554-4002</li>
-    <li><strong>Patan Hospital Emergency:</strong> +977-1-552-2295</li>
+    <li><strong data-lang="ambulance">Ambulance:</strong> 102</li>
+    <li><strong data-lang="covidHelpline">COVID Helpline:</strong> 1133</li>
+    <li><strong data-lang="lalitpurHospital">Lalitpur District Hospital:</strong> +977-1-554-4002</li>
+    <li><strong data-lang="patanHospital">Patan Hospital Emergency:</strong> +977-1-552-2295</li>
   </ul>
+  <script src="../languages.js"></script>
 </body>
 </html>
