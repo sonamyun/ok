@@ -15,6 +15,66 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // --- Event Listeners for Buttons ---
+// Function to get translations (assuming getTranslation is available from dashboard-translation.js)
+// Make sure dashboard-translation.js is loaded before dashboard.js in your HTML if using this.
+// window.getTranslation is expected to be exposed globally by dashboard-translation.js.
+
+// --- Chat with Swastha AI Logic ---
+
+// Function to send message to the backend and get AI response
+window.sendMessage = async function() {
+  const chatInput = document.getElementById('chat-input');
+  const responseDiv = document.querySelector('#chat-panel .response'); // Make sure your chat panel has a div with class 'response'
+  const message = chatInput.value.trim();
+
+  if (message) {
+    // Display user's message immediately and a processing message
+    responseDiv.textContent = `${window.getTranslation('youLabel') || 'You'}: ${message}\n${window.getTranslation('swasthaAILabel') || 'Swastha AI'}: ${window.getTranslation('processingRequest') || 'Processing your request...'}`;
+    chatInput.value = ''; // Clear input field
+
+    try {
+      // Send message to your backend server (Express app running on port 3000)
+      // The URL '/api/chat' assumes your dashboard.html is served by your Express server.
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: message })
+      });
+
+      if (!response.ok) {
+        console.log(response)
+        // If the server response is not OK (e.g., 400, 500)
+        const errorData = await response.json();
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      // Display AI's response
+      responseDiv.textContent = `${window.getTranslation('youLabel') || 'You'}: ${message}\n${window.getTranslation('swasthaAILabel') || 'Swastha AI'}: ${data.reply}`;
+
+    } catch (error) {
+      console.error('Error sending message to backend or processing AI response:', error);
+      // Display an error message to the user
+      responseDiv.textContent = `${window.getTranslation('swasthaAILabel') || 'Swastha AI'}: ${window.getTranslation('errorMessage') || 'Sorry, something went wrong. Please try again.'}`;
+    }
+  } else {
+    // If the input is empty
+    responseDiv.textContent = `${window.getTranslation('swasthaAILabel') || 'Swastha AI'}: ${window.getTranslation('pleaseTypeSymptoms') || 'Please type your symptoms or query.'}`;
+  }
+};
+
+// Add event listener for the send button
+document.getElementById('send-chat-btn').addEventListener('click', window.sendMessage);
+
+// Add event listener for Enter key in the chat input
+document.getElementById('chat-input').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault(); // Prevent new line in input field
+    window.sendMessage();
+  }
+});
 
 // Logout Button
 document.getElementById("logout-btn").addEventListener("click", () => {

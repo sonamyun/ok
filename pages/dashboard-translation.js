@@ -4,24 +4,25 @@ const dashboardTranslations = {
     en: {
         // Sidebar
         sidebarHome: "Home",
+        sidebarChat: "Chat with AI", // Changed key for consistency
         sidebarSettings: "Settings",
         sidebarIntegrations: "Integrations",
         sidebarSecurity: "Security",
+        userLogout: "Logout", // Also used in header dropdown
 
         // Header
         dashboardTitle: "Swastha AI Dashboard",
         globalSearchPlaceholder: "Global Search...",
         langEnglish: "English",
         langNepali: "Nepali",
-        userProfile: "Profile",
-        userLogout: "Logout",
+        userProfile: "Profile", // Also used in header dropdown
 
         // Dashboard Content - User Stats
         userStatsHeading: "User Stats",
         emailLabel: "Email",
         authTypeLabel: "Auth Type",
         totalUsersLabel: "Total Users",
-        activeUsersLabel: "Active Users",
+        activeUsersLabel: "Active Users Today", // More specific
 
         // Dashboard Content - Medical Trends
         medicalTrendsHeading: "Medical Trends",
@@ -29,361 +30,263 @@ const dashboardTranslations = {
         trendFlu: "Increased flu cases reported in Bagmati Province.",
         trendDiabetes: "New guidelines for diabetes management published.",
         trendTelemedicine: "Telemedicine adoption growing.",
+        readMore: "Read More",
 
         // Dashboard Content - Quick Actions
         quickActionsHeading: "Quick Actions",
         actionAskHelp: "Ask Help",
         actionLocate: "Locate",
         actionAskDoctor: "Ask Doctor",
-
-        // Dashboard Content - Chat with Swastha AI
-        chatHeading: "Chat with Swastha AI",
-        chatInputPlaceholder: "Describe your medical symptoms (e.g., I have a headache and feel dizzy)...",
-        sendButton: "Send",
-        chatInitialResponse: "Swastha AI: Type your symptoms above to get assistance.",
-        smartSuggestionsText: "Smart suggestions: \"Your traffic is 20% lower than usual on Wednesdays.\"",
-        exportChatButton: "Export Chat (PDF)",
-        youLabel: "You", // Added for chat responses
-        swasthaAILabel: "Swastha AI", // Added for chat responses
-        processingRequest: "Processing your request...", // Added for chat responses
-        aiResponseHeadacheDizzy: "Thank you for providing your symptoms. Based on \"headache and dizziness\", it could be due to various reasons like dehydration, stress, or even a migraine. If symptoms persist or worsen, please consult a medical professional directly.", // Added for chat responses
-        pleaseTypeSymptoms: "Please type your symptoms to get assistance.", // Added for chat responses
-
-        // Dashboard Content - To-Do List
-        todoListHeading: "To-Do List",
-        todoCheckup: "Schedule annual check-up",
-        todoRecipes: "Research healthy recipes",
-        todoExercise: "Exercise for 30 minutes",
+        okButton: "OK", // Used in popups
 
         // Dashboard Content - Calendar
-        calendarHeading: "Calendar",
-        calendarToday: "Today",
-        calendarNoEvents: "No special events.",
-        calendarUpcoming: "Upcoming",
-        calendarDentalAppointment: "Dental appointment (July 10).",
+        calendarHeading: "Appointments",
 
-        // Dashboard Content - Notifications
-        notificationsHeading: "Notifications",
-        notificationMessage: "New message from Dr. Sharma.",
-        notificationReminder: "Reminder: Take medication at 8 PM.",
+        // Dashboard Content - Key Performance Indicators (KPIs)
+        kpiHeading: "Key Health Indicators",
+        kpiWeight: "Weight:",
+        kpiHeartRate: "Heart Rate:",
+        kpiBloodPressure: "BP:",
+        kpiSleep: "Sleep:",
+        editKpiButton: "Edit KPIs",
 
-        // Dashboard Content - Health Score
-        healthScoreHeading: "Health Score",
-        healthIndexParagraph: "Overall Health Index",
+        // Chat with Swastha AI Panel
+        chatHeading: "Chat with Swastha AI",
+        chatInputPlaceholder: "Describe your medical symptoms (e.g., I have a headache and feel dizzy)...",
+        chatInitialResponse: "Type your symptoms above to get assistance.", // Initial text in chat
+        sendButton: "Send",
+        smartSuggestionsText: "Smart suggestions: \"Meditation Helps decrease your stress\"",
+        exportChatButton: "Export Chat (PDF)",
 
         // Settings Panel
-        settingsPanelHeading: "Settings",
-        tabUserPrefs: "User Preferences",
-        tabAccountSettings: "Account Settings",
-        tabCustomization: "Customization",
-        tabSystemSettings: "System Settings",
-
-        // Settings Panel - User Preferences
-        userPrefsSubheading: "User Preferences",
-        themeLabel: "Theme:",
-        themeLight: "Light",
-        themeDark: "Dark",
-        themeAuto: "Auto",
-        emailNotificationsLabel: "Email Notifications:",
-        smsNotificationsLabel: "SMS Notifications:",
-        timeZoneLabel: "Time Zone:",
-        timezoneKathmandu: "Kathmandu (GMT+05:45)",
-        timezoneNewYork: "New York (EST)",
-        dataRefreshRateLabel: "Data Refresh Rate:",
-        refreshAuto: "Automatic",
-        refreshManual: "Manual",
-        savePrefsButton: "Save Preferences",
-
-        // Settings Panel - Account Settings
-        accountSettingsSubheading: "Account Settings",
+        settingsHeading: "Settings",
+        settingsTabGeneral: "General",
+        settingsTabProfile: "Profile",
+        settingsTabNotifications: "Notifications",
+        generalSettingsHeading: "General Settings",
+        languageSettingLabel: "Language:",
+        themeSettingLabel: "Theme:",
+        lightThemeButton: "Light",
+        darkThemeButton: "Dark",
+        profileSettingsHeading: "Profile Settings",
         profileNameLabel: "Name:",
         profileEmailLabel: "Email:",
-        passwordSecurityLabel: "Password & Security:",
-        changePasswordButton: "Change Password",
-        enable2FAButton: "Enable 2FA",
-        privacyControlsLabel: "Privacy Controls:",
-        manageDataSharingButton: "Manage Data Sharing",
-        saveAccountSettingsButton: "Save Account Settings",
-
-        // Settings Panel - Customization
-        customizationSubheading: "Customization",
-        widgetLayoutLabel: "Widget Layout:",
-        dragDropEditorButton: "Drag & Drop Editor",
-        defaultLandingPageLabel: "Default Landing Page:",
-        landingHome: "Home Dashboard",
-        landingChat: "Chat with AI",
-        landingTrends: "Medical Trends",
-        saveCustomizationsButton: "Save Customizations",
-
-        // Settings Panel - System Settings
-        systemSettingsSubheading: "System Settings",
-        rolePermissionsLabel: "Role & Permissions:",
-        adminAccessRequired: "Admin access required.",
-        backupRestoreLabel: "Backup & Restore:",
-        createBackupButton: "Create Backup",
-        restoreBackupButton: "Restore from Backup",
-        versionInfoLabel: "Version Info:",
-        versionNumber: "v1.0.0 (Build 20250705)", // This will be hardcoded, or dynamically updated from JS
-
-        // Integrations Panel
-        integrationsPanelHeading: "Integrations",
-        integrationsParagraph: "Connect Swastha AI with your favorite third-party applications.",
-        googleAnalyticsHeading: "Google Analytics",
-        googleAnalyticsDesc: "Connect to view your website traffic data.",
-        stripeHeading: "Stripe (Payments)",
-        stripeDesc: "Integrate for payment processing.",
-        slackTeamsHeading: "Slack / Teams",
-        slackTeamsDesc: "Receive notifications and alerts directly.",
-        connectButton: "Connect", // Reused for all connect buttons
+        editProfileButton: "Edit Profile",
+        notificationSettingsHeading: "Notification Settings",
+        enableEmailNotifications: "Enable Email Notifications",
+        enablePushNotifications: "Enable Push Notifications",
+        saveChangesButton: "Save Changes",
 
         // Security Panel
-        securityPanelHeading: "Security & Access",
-        securityParagraph: "Manage security settings and review access logs.",
-        auditLogsHeading: "Audit Logs",
-        auditLogsDesc: "Review all system activities and changes.",
-        viewLogsButton: "View Logs",
-        sessionManagementHeading: "Session Management",
-        sessionManagementDesc: "See active sessions and log out devices.",
-        manageSessionsButton: "Manage Sessions",
-        userRolesHeading: "User Roles",
-        userRolesDesc: "Define and manage user roles and permissions.",
-        manageRolesButton: "Manage Roles",
+        securityHeading: "Security",
+        twoFactorAuthHeading: "Two-Factor Authentication",
+        twoFactorAuthDescription: "Add an extra layer of security to your account.",
+        enableButton: "Enable",
+        changePasswordHeading: "Change Password",
+        changePasswordDescription: "Update your password regularly for better security.",
+        changePasswordButton: "Change Password",
+
+        // Integrations Panel
+        integrationsHeading: "Integrations",
+        googleFitHeading: "Google Fit",
+        googleFitDescription: "Connect your Google Fit account to sync health data.",
+        appleHealthHeading: "Apple Health",
+        appleHealthDescription: "Connect your Apple Health account to sync health data.",
+        connectButton: "Connect",
 
         // Membership Popup
-        membershipRequiredHeading: "Membership Required",
-        membershipRequiredParagraph: "Please upgrade your membership to access this feature.",
-        closeButton: "Close",
+        membershipPopupHeading: "Membership Required",
+        membershipPopupText: "Access to a doctor consultation requires a premium membership. Please upgrade your account.",
 
-        // Alerts/Dynamic Messages
-        logoutFailed: "Failed to logout",
-        settingsSavedPrefix: "Settings saved for ",
-        settingsSavedSuffix: "!",
-        UserPreferences: "User Preferences", // Category name for alert
-        AccountSettings: "Account Settings", // Category name for alert
-        Customization: "Customization", // Category name for alert
+        // Resource Links (assuming these are buttons)
+        whoLink: "WHO Official Site",
+        cdcLink: "CDC Official Site",
+        nhsLink: "NHS Health A-Z",
+
+        // Login/Registration Page (index.html specific, if used here)
+        createAccount: "Create Account",
+        namePlaceholder: "Name",
+        emailPlaceholder: "Email",
+        passwordPlaceholder: "Password",
+        signUpButton: "Sign Up",
+        welcomeBackHeading: "Welcome Back!",
+        welcomeBackParagraph: "Please enter your credentials to continue to Swastha AI",
+        signInButton: "Sign In",
+        namasteHeading: "Namaste!",
+        namasteParagraph: "Enter your personal details and chat with your Swastha AI",
+        enterEmailPlaceholder: "Enter your email",
+        sendResetLinkButton: "Send Reset Link",
+        loginButton: "Login", // Assuming this is the login form button
+        // Popup messages (from firebase-auth.js)
+        loginFailed: "Login failed:",
+        signupFailed: "Signup failed:",
+        passwordResetSuccess: "Password reset email sent!",
+        passwordResetFailed: "Password reset failed:",
+        emailRequired: "Please enter your email.",
+        accountCreated: "Account created! Redirecting to dashboard...",
     },
     ne: {
         // Sidebar
-        sidebarHome: "गृहपृष्ठ",
-        sidebarSettings: "सेटिङ्स",
+        sidebarHome: "गृह",
+        sidebarChat: "एआईसँग कुराकानी", // Updated Nepali translation for new key
+        sidebarSettings: "सेटिङहरू",
         sidebarIntegrations: "एकीकरणहरू",
         sidebarSecurity: "सुरक्षा",
+        userLogout: "लगआउट",
 
         // Header
-        dashboardTitle: "स्वस्थ एआई (AI) ड्यासबोर्ड",
+        dashboardTitle: "स्वस्थ एआई ड्यासबोर्ड",
         globalSearchPlaceholder: "विश्वव्यापी खोज...",
         langEnglish: "अंग्रेजी",
         langNepali: "नेपाली",
         userProfile: "प्रोफाइल",
-        userLogout: "लगआउट",
 
         // Dashboard Content - User Stats
         userStatsHeading: "प्रयोगकर्ता तथ्याङ्क",
-        emailLabel: "ईमेल",
-        authTypeLabel: "प्रमाणीकरण प्रकार",
-        totalUsersLabel: "कुल प्रयोगकर्ताहरू",
-        activeUsersLabel: "सक्रिय प्रयोगकर्ताहरू",
+        emailLabel: "इमेल", // Added Nepali translation
+        authTypeLabel: "प्रमाणीकरण प्रकार", // Added Nepali translation
+        totalUsersLabel: "कुल प्रयोगकर्ताहरू", // Added Nepali translation
+        activeUsersLabel: "आजका सक्रिय प्रयोगकर्ताहरू", // Added Nepali translation
 
         // Dashboard Content - Medical Trends
-        medicalTrendsHeading: "चिकित्सा प्रवृत्तिहरू",
-        medicalTrendsParagraph: "भर्खरका स्वास्थ्य-सम्बन्धित अन्तर्दृष्टि र अपडेटहरू। स्वास्थ्य सेवामा नवीनतम बारे सूचित रहनुहोस्।",
-        trendFlu: "बागमती प्रदेशमा फ्लूका केसहरू बढेको रिपोर्ट।",
+        medicalTrendsHeading: "चिकित्सा प्रवृतिहरू",
+        medicalTrendsParagraph: "हालका स्वास्थ्य-सम्बन्धित अन्तर्दृष्टि र अपडेटहरू। स्वास्थ्य सेवामा नवीनतम बारे सूचित रहनुहोस्।",
+        trendFlu: "बागमती प्रदेशमा फ्लूका बिरामी बढेको रिपोर्ट।",
         trendDiabetes: "मधुमेह व्यवस्थापनका लागि नयाँ दिशानिर्देशहरू प्रकाशित।",
         trendTelemedicine: "टेलिमेडिसिन अपनाउने क्रम बढ्दै।",
+        readMore: "थप पढ्नुहोस्",
 
         // Dashboard Content - Quick Actions
         quickActionsHeading: "द्रुत कार्यहरू",
-        actionAskHelp: "मद्दत माग्नुहोस्",
-        actionLocate: "स्थान पत्ता लगाउनुहोस्",
-        actionAskDoctor: "डाक्टरलाई सोध्नुहोस्",
-
-        // Dashboard Content - Chat with Swastha AI
-        chatHeading: "स्वस्थ एआई (AI) सँग कुरा गर्नुहोस्",
-        chatInputPlaceholder: "आफ्नो चिकित्सा लक्षणहरू वर्णन गर्नुहोस् (उदाहरणका लागि, मलाई टाउको दुखेको छ र चक्कर लागेको छ)...",
-        sendButton: "पठाउनुहोस्",
-        chatInitialResponse: "स्वस्थ एआई (AI): सहायता प्राप्त गर्न माथि आफ्नो लक्षणहरू टाइप गर्नुहोस्।",
-        smartSuggestionsText: "स्मार्ट सुझावहरू: \"बुधबार तपाईंको ट्राफिक सामान्य भन्दा २०% कम छ।\"",
-        exportChatButton: "कुराकानी निर्यात गर्नुहोस् (PDF)",
-        youLabel: "तपाईं",
-        swasthaAILabel: "स्वस्थ एआई (AI)",
-        processingRequest: "तपाईंको अनुरोध प्रक्रिया गर्दैछ...",
-        aiResponseHeadacheDizzy: "तपाईंको लक्षणहरू प्रदान गर्नुभएकोमा धन्यवाद। 'टाउको दुखेको र चक्कर लागेको' आधारमा, यो निर्जलीकरण, तनाव, वा माइग्रेन जस्ता विभिन्न कारणले हुन सक्छ। यदि लक्षणहरू जारी रहे वा बिग्रिएमा, कृपया सिधै चिकित्सकसँग परामर्श गर्नुहोस्।",
-        pleaseTypeSymptoms: "सहायता प्राप्त गर्न कृपया आफ्नो लक्षणहरू टाइप गर्नुहोस्।",
-
-        // Dashboard Content - To-Do List
-        todoListHeading: "गर्नुपर्ने कार्यहरूको सूची",
-        todoCheckup: "वार्षिक जाँचको तालिका बनाउनुहोस्",
-        todoRecipes: "स्वस्थ व्यञ्जनहरू अनुसन्धान गर्नुहोस्",
-        todoExercise: "३० मिनेट व्यायाम गर्नुहोस्",
+        actionAskHelp: "मद्दत सोध्नुहोस्",
+        actionLocate: "पत्ता लगाउनुहोस्",
+        actionAskDoctor: "डाक्टर सोध्नुहोस्",
+        okButton: "ठीक छ",
 
         // Dashboard Content - Calendar
-        calendarHeading: "क्यालेन्डर",
-        calendarToday: "आज",
-        calendarNoEvents: "कुनै विशेष घटनाहरू छैनन्।",
-        calendarUpcoming: "आगामी",
-        calendarDentalAppointment: "दाँतको अपोइन्टमेन्ट (जुलाई १०)।",
+        calendarHeading: "अपोइन्टमेन्टहरू",
 
-        // Dashboard Content - Notifications
-        notificationsHeading: "सूचनाहरू",
-        notificationMessage: "डा. शर्माबाट नयाँ सन्देश।",
-        notificationReminder: "रिमाइन्डर: बेलुका ८ बजे औषधि लिनुहोस्।",
+        // Dashboard Content - Key Performance Indicators (KPIs)
+        kpiHeading: "मुख्य स्वास्थ्य सूचकहरू",
+        kpiWeight: "वजन:",
+        kpiHeartRate: "मुटुको गति:",
+        kpiBloodPressure: "रक्तचाप:",
+        kpiSleep: "निद्रा:",
+        editKpiButton: "KPIs सम्पादन गर्नुहोस्",
 
-        // Dashboard Content - Health Score
-        healthScoreHeading: "स्वास्थ्य स्कोर",
-        healthIndexParagraph: "समग्र स्वास्थ्य सूचकांक",
+        // Chat with Swastha AI Panel
+        chatHeading: "स्वस्थ एआईसँग कुराकानी गर्नुहोस्",
+        chatInputPlaceholder: "आफ्नो मेडिकल लक्षणहरू वर्णन गर्नुहोस् (उदाहरणका लागि, मलाई टाउको दुखेको छ र चक्कर लागेको छ)...",
+        chatInitialResponse: "सहायताका लागि माथि आफ्ना लक्षणहरू टाइप गर्नुहोस्।",
+        sendButton: "पठाउनुहोस्",
+        smartSuggestionsText: "स्मार्ट सुझावहरू: \"ध्यानले तनाव कम गर्न मद्दत गर्छ\"",
+        exportChatButton: "च्याट निर्यात गर्नुहोस् (PDF)",
 
         // Settings Panel
-        settingsPanelHeading: "सेटिङ्स",
-        tabUserPrefs: "प्रयोगकर्ता प्राथमिकताहरू",
-        tabAccountSettings: "खाता सेटिङ्स",
-        tabCustomization: "अनुकूलन",
-        tabSystemSettings: "प्रणाली सेटिङ्स",
-
-        // Settings Panel - User Preferences
-        userPrefsSubheading: "प्रयोगकर्ता प्राथमिकताहरू",
-        themeLabel: "थिम:",
-        themeLight: "हल्का",
-        themeDark: "गाढा",
-        themeAuto: "स्वतः",
-        emailNotificationsLabel: "ईमेल सूचनाहरू:",
-        smsNotificationsLabel: "एसएमएस सूचनाहरू:",
-        timeZoneLabel: "समय क्षेत्र:",
-        timezoneKathmandu: "काठमाडौं (GMT+०५:४५)",
-        timezoneNewYork: "न्यु योर्क (EST)",
-        dataRefreshRateLabel: "डाटा रिफ्रेस दर:",
-        refreshAuto: "स्वचालित",
-        refreshManual: "म्यानुअल",
-        savePrefsButton: "प्राथमिकताहरू बचत गर्नुहोस्",
-
-        // Settings Panel - Account Settings
-        accountSettingsSubheading: "खाता सेटिङ्स",
+        settingsHeading: "सेटिङहरू",
+        settingsTabGeneral: "सामान्य",
+        settingsTabProfile: "प्रोफाइल",
+        settingsTabNotifications: "सूचनाहरू",
+        generalSettingsHeading: "सामान्य सेटिङहरू",
+        languageSettingLabel: "भाषा:",
+        themeSettingLabel: "थिम:",
+        lightThemeButton: "लाइट",
+        darkThemeButton: "गाढा",
+        profileSettingsHeading: "प्रोफाइल सेटिङहरू",
         profileNameLabel: "नाम:",
-        profileEmailLabel: "ईमेल:",
-        passwordSecurityLabel: "पासवर्ड र सुरक्षा:",
-        changePasswordButton: "पासवर्ड परिवर्तन गर्नुहोस्",
-        enable2FAButton: "२एफए (2FA) सक्षम गर्नुहोस्",
-        privacyControlsLabel: "गोपनीयता नियन्त्रणहरू:",
-        manageDataSharingButton: "डाटा साझेदारी व्यवस्थापन गर्नुहोस्",
-        saveAccountSettingsButton: "खाता सेटिङ्स बचत गर्नुहोस्",
-
-        // Settings Panel - Customization
-        customizationSubheading: "अनुकूलन",
-        widgetLayoutLabel: "विजेट लेआउट:",
-        dragDropEditorButton: "तान्नुहोस् र छोड्नुहोस् सम्पादक",
-        defaultLandingPageLabel: "पूर्वनिर्धारित ल्यान्डिङ पृष्ठ:",
-        landingHome: "गृह ड्यासबोर्ड",
-        landingChat: "एआई (AI) सँग कुरा गर्नुहोस्",
-        landingTrends: "चिकित्सा प्रवृत्तिहरू",
-        saveCustomizationsButton: "अनुकूलनहरू बचत गर्नुहोस्",
-
-        // Settings Panel - System Settings
-        systemSettingsSubheading: "प्रणाली सेटिङ्स",
-        rolePermissionsLabel: "भूमिका र अनुमतिहरू:",
-        adminAccessRequired: "प्रशासक पहुँच आवश्यक छ।",
-        backupRestoreLabel: "ब्याकअप र पुनर्स्थापना:",
-        createBackupButton: "ब्याकअप सिर्जना गर्नुहोस्",
-        restoreBackupButton: "ब्याकअपबाट पुनर्स्थापना गर्नुहोस्",
-        versionInfoLabel: "संस्करण जानकारी:",
-        versionNumber: "v१.०.० (बिल्ड २०२५०७०५)",
-
-        // Integrations Panel
-        integrationsPanelHeading: "एकीकरणहरू",
-        integrationsParagraph: "स्वस्थ एआई (AI) लाई आफ्नो मनपर्ने तेस्रो-पक्षीय अनुप्रयोगहरूसँग जोड्नुहोस्।",
-        googleAnalyticsHeading: "गुगल एनालिटिक्स",
-        googleAnalyticsDesc: "आफ्नो वेबसाइट ट्राफिक डाटा हेर्न जोड्नुहोस्।",
-        stripeHeading: "स्ट्राइप (भुक्तानीहरू)",
-        stripeDesc: "भुक्तानी प्रक्रियाको लागि एकीकृत गर्नुहोस्।",
-        slackTeamsHeading: "स्ल्याक / टिम्स",
-        slackTeamsDesc: "सीधै सूचनाहरू र अलर्टहरू प्राप्त गर्नुहोस्।",
-        connectButton: "जोड्नुहोस्",
+        profileEmailLabel: "इमेल:",
+        editProfileButton: "प्रोफाइल सम्पादन गर्नुहोस्",
+        notificationSettingsHeading: "सूचना सेटिङहरू",
+        enableEmailNotifications: "इमेल सूचनाहरू सक्षम पार्नुहोस्",
+        enablePushNotifications: "पुश सूचनाहरू सक्षम पार्नुहोस्",
+        saveChangesButton: "परिवर्तनहरू बचत गर्नुहोस्",
 
         // Security Panel
-        securityPanelHeading: "सुरक्षा र पहुँच",
-        securityParagraph: "सुरक्षा सेटिङ्स व्यवस्थापन गर्नुहोस् र पहुँच लगहरू समीक्षा गर्नुहोस्।",
-        auditLogsHeading: "अडिट लगहरू",
-        auditLogsDesc: "सबै प्रणाली गतिविधिहरू र परिवर्तनहरू समीक्षा गर्नुहोस्।",
-        viewLogsButton: "लगहरू हेर्नुहोस्",
-        sessionManagementHeading: "सत्र व्यवस्थापन",
-        sessionManagementDesc: "सक्रिय सत्रहरू हेर्नुहोस् र उपकरणहरू लगआउट गर्नुहोस्।",
-        userRolesHeading: "प्रयोगकर्ता भूमिका",
-        userRolesDesc: "प्रयोगकर्ता भूमिका र अनुमतिहरू परिभाषित र व्यवस्थापन गर्नुहोस्।",
-        manageRolesButton: "भूमिका व्यवस्थापन गर्नुहोस्",
+        securityHeading: "सुरक्षा",
+        twoFactorAuthHeading: "दुई-कारक प्रमाणीकरण",
+        twoFactorAuthDescription: "आफ्नो खातामा सुरक्षाको अतिरिक्त तह थप्नुहोस्।",
+        enableButton: "सक्षम पार्नुहोस्",
+        changePasswordHeading: "पासवर्ड परिवर्तन गर्नुहोस्",
+        changePasswordDescription: "राम्रो सुरक्षाका लागि आफ्नो पासवर्ड नियमित रूपमा अपडेट गर्नुहोस्।",
+        changePasswordButton: "पासवर्ड परिवर्तन गर्नुहोस्",
+
+        // Integrations Panel
+        integrationsHeading: "एकीकरणहरू",
+        googleFitHeading: "गुगल फिट",
+        googleFitDescription: "स्वास्थ्य डेटा सिङ्क गर्न आफ्नो गुगल फिट खाता जडान गर्नुहोस्।",
+        appleHealthHeading: "एप्पल स्वास्थ्य",
+        appleHealthDescription: "स्वास्थ्य डेटा सिङ्क गर्न आफ्नो एप्पल स्वास्थ्य खाता जडान गर्नुहोस्।",
+        connectButton: "जडान गर्नुहोस्",
 
         // Membership Popup
-        membershipRequiredHeading: "सदस्यता आवश्यक छ",
-        membershipRequiredParagraph: "यो सुविधा पहुँच गर्न कृपया आफ्नो सदस्यता अपग्रेड गर्नुहोस्।",
-        closeButton: "बन्द गर्नुहोस्",
+        membershipPopupHeading: "सदस्यता आवश्यक छ",
+        membershipPopupText: "डाक्टर परामर्शमा पहुँचका लागि प्रिमियम सदस्यता आवश्यक छ। कृपया आफ्नो खाता अपग्रेड गर्नुहोस्।",
 
-        // Alerts/Dynamic Messages
-        logoutFailed: "लगआउट असफल भयो",
-        settingsSavedPrefix: "सेटिङ्स बचत गरियो ",
-        settingsSavedSuffix: "!",
-        UserPreferences: "प्रयोगकर्ता प्राथमिकताहरू",
-        AccountSettings: "खाता सेटिङ्स",
-        Customization: "अनुकूलन",
+        // Resource Links
+        whoLink: "डब्ल्यूएचओ आधिकारिक साइट",
+        cdcLink: "सीडीसी आधिकारिक साइट",
+        nhsLink: "एनएचएस स्वास्थ्य ए-जेड",
+
+        // Login/Registration Page (index.html specific, if used here)
+        createAccount: "खाता सिर्जना गर्नुहोस्",
+        namePlaceholder: "नाम",
+        emailPlaceholder: "इमेल",
+        passwordPlaceholder: "पासवर्ड",
+        signUpButton: "साइन अप गर्नुहोस्",
+        welcomeBackHeading: "फेरि स्वागत छ!",
+        welcomeBackParagraph: "स्वस्थ एआईमा जारी राख्न कृपया आफ्नो प्रमाणहरू प्रविष्ट गर्नुहोस्",
+        signInButton: "साइन इन गर्नुहोस्",
+        namasteHeading: "नमस्ते!",
+        namasteParagraph: "आफ्नो व्यक्तिगत विवरण प्रविष्ट गर्नुहोस् र आफ्नो स्वस्थ एआईसँग कुराकानी गर्नुहोस्",
+        enterEmailPlaceholder: "आफ्नो इमेल प्रविष्ट गर्नुहोस्",
+        sendResetLinkButton: "रिसेट लिङ्क पठाउनुहोस्",
+        loginButton: "लगइन",
+        // Popup messages (from firebase-auth.js)
+        loginFailed: "लगइन असफल भयो:",
+        signupFailed: "साइनअप असफल भयो:",
+        passwordResetSuccess: "पासवर्ड रिसेट इमेल पठाइयो!",
+        passwordResetFailed: "पासवर्ड रिसेट असफल भयो:",
+        emailRequired: "कृपया आफ्नो इमेल प्रविष्ट गर्नुहोस्।",
+        accountCreated: "खाता सिर्जना भयो! ड्यासबोर्डमा रिडाइरेक्ट गर्दै...",
     }
 };
 
-let currentDashboardLanguage = localStorage.getItem('selectedLanguage') || 'en'; // Initialize with stored language or English
+// Get current language from localStorage or default to 'en'
+const currentDashboardLanguage = localStorage.getItem('dashboardLanguage') || 'en';
 
+// Function to get translation for a given key
 function getTranslation(key) {
-    return dashboardTranslations[currentDashboardLanguage][key] || dashboardTranslations.en[key] || key;
+    return dashboardTranslations[currentDashboardLanguage][key] || key; // Fallback to key if translation not found
 }
 
+// Function to set language and update all data-key elements
 function setLanguage(lang) {
-    currentDashboardLanguage = lang;
-    localStorage.setItem('selectedLanguage', lang); // Save preference
+    localStorage.setItem('dashboardLanguage', lang);
+    currentDashboardLanguage = lang; // Update the global variable
 
     document.querySelectorAll('[data-key]').forEach(element => {
-        const key = element.getAttribute('data-key');
+        const key = element.dataset.key;
+        element.textContent = getTranslation(key);
+
+        // Special handling for placeholder text if the element is an input
         if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
             element.setAttribute('placeholder', getTranslation(key));
-        } else {
-            element.textContent = getTranslation(key);
         }
     });
 
-    // Handle special cases for options in select elements that have data-key
-    document.querySelectorAll('select[data-key="langSelect"] option').forEach(option => {
-        const key = option.getAttribute('data-key');
-        option.textContent = getTranslation(key);
-    });
-    document.querySelectorAll('#theme-select option').forEach(option => {
-        const key = option.getAttribute('data-key');
-        option.textContent = getTranslation(key);
-    });
-     document.querySelectorAll('#time-zone-select option').forEach(option => {
-        const key = option.getAttribute('data-key');
-        option.textContent = getTranslation(key);
-    });
-    document.querySelectorAll('#data-refresh-rate option').forEach(option => {
-        const key = option.getAttribute('data-key');
-        option.textContent = getTranslation(key);
-    });
-    document.querySelectorAll('#default-landing-page option').forEach(option => {
-        const key = option.getAttribute('data-key');
-        option.textContent = getTranslation(key);
-    });
-
-
-    // Ensure the dropdown itself shows the currently active language
-    const langSelect = document.getElementById('language-select');
-    if (langSelect) {
-        langSelect.value = lang;
+    // Handle dynamic content that might not have data-key attributes
+    // e.g., Medical Trends dynamic heading and paragraph
+    const medicalTrendsHeadingDynamic = document.getElementById('medical-trends-heading-dynamic');
+    if (medicalTrendsHeadingDynamic) {
+        // This is now handled by the updateMedicalTrend function in dashboard.html's script
+        // However, if the entire list of articles should be translated instantly on language change,
+        // you would need to re-run the `updateMedicalTrend` or a similar function here.
+        // For now, it updates on its own interval based on the hardcoded list.
+        // To properly translate the trend content dynamically, the `medicalNewsArticles`
+        // array would also need to be part of the `dashboardTranslations` object.
     }
 
-    // Update dynamic text that might not have a data-key directly, like some parts of the chat response
-    // Or elements whose content is built dynamically by JS
-    // This part requires careful mapping to ensure all dynamic texts are handled.
-    // For the chat response:
-    // If it's already showing the initial message, update it
-    const chatResponseDiv = document.querySelector('.chatbox .response');
-    if (chatResponseDiv && chatResponseDiv.textContent.includes('Type your symptoms above')) { // Check if it's the initial message
-        chatResponseDiv.textContent = getTranslation('swasthaAILabel') + ": " + getTranslation('chatInitialResponse');
-    }
-
-    // Update user email and auth type if they are loaded later
-    // These are typically populated by dashboard.js, but if they are visible when language changes,
+    // Update popup content if needed after language changes,
     // they'll need to be refreshed if their initial 'Loading...' state is translated.
     // For now, we assume user-email and authType-stat are populated by the backend/Firebase,
     // so only their labels are translated.
@@ -418,4 +321,4 @@ document.addEventListener('DOMContentLoaded', () => {
 // Or use module imports if both are modules
 window.getTranslation = getTranslation;
 window.setLanguage = setLanguage;
-window.updatePopupContent = updatePopupContent; // Expose this function for the popup
+window.updatePopupContent = updatePopupContent; // Expose this function

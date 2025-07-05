@@ -136,7 +136,7 @@
             <div class="response" data-key="chatInitialResponse">Type your symptoms above to get assistance.</div>
             <div class="chat-input-area">
                 <input type="text" id="chat-input" data-key="chatInputPlaceholder" placeholder="Describe your medical symptoms (e.g., I have a headache and feel dizzy)..." />
-                <button class="submit-btn" onclick="sendMessage()" data-key="sendButton">Send</button>
+                <button class="submit-btn" id="send-chat-btn" data-key="sendButton">Send</button>
             </div>
             <div class="smart-features">
                 <p class="small-text"><i class="fas fa-lightbulb"></i> <span data-key="smartSuggestionsText">Smart suggestions: "Meditation Helps decrease your stress"</span></p>
@@ -144,6 +144,7 @@
             </div>
         </div>
     </div>
+    
 
     <div id="settings-panel" class="settings-panel" style="display: none;">
       <h2 data-key="settingsPanelHeading"><i class="fas fa-cog"></i> Settings</h2>
@@ -320,7 +321,7 @@
   <script type="module">
     // Import auth for logout
     import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-    const auth = getAuth();
+  
 
     // Utility function to update popup content based on data-keys
     window.updatePopupContent = function(popupId, keys) {
@@ -669,7 +670,60 @@
             });
         });
     });
-
+    
   </script>
+  <script src="dashboard-translation.js"></script>
+  <script src="dashboard.js"></script>
+  <script type="module">
+  // ✅ Import Firebase SDK
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+  // ✅ Firebase Config
+  const firebaseConfig = {
+    apiKey: "AIzaSyA6EYHJBZiaJ7zkSFAceB6Dl2zDvq9rHG0",
+    authDomain: "ai-assistant-3d1d1.firebaseapp.com",
+    projectId: "ai-assistant-3d1d1",
+    storageBucket: "ai-assistant-3d1d1.appspot.com",
+    messagingSenderId: "955748553206",
+    appId: "1:955748553206:web:c7490f203f334ff3b137d7",
+    measurementId: "G-024JJFZE5V"
+  };
+
+  // ✅ Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // ✅ Handle Auth State
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // ✅ Display user info
+      document.getElementById("user-email").textContent = user.email;
+      document.getElementById("email-stat").textContent = user.email;
+      document.getElementById("authType-stat").textContent = user.providerData[0]?.providerId || "Email/Password";
+
+      // 🔄 Dummy placeholder data for now
+      document.getElementById("user-name-stat").textContent = "Jane Doe";
+      document.getElementById("user-age-stat").textContent = "30";
+      document.getElementById("user-gender-stat").textContent = "Female";
+    } else {
+      // ❌ No user -> redirect to login
+      window.location.href = "../index.html";
+    }
+  });
+
+  // ✅ Logout Handler
+  document.getElementById("logout-button")?.addEventListener("click", async (e) => {
+    e.preventDefault();
+    try {
+      await signOut(auth);
+      window.location.href = "../index.html";
+    } catch (error) {
+      console.error("Logout failed:", error.message);
+      alert("Logout failed: " + error.message);
+    }
+  });
+</script>
+
 </body>
-</html> 
+</html> x 
