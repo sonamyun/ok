@@ -603,25 +603,44 @@
         }
 
         // Initialize User Stats (Placeholder for dynamic data)
-        document.getElementById('user-name-stat').textContent = 'Jane Doe'; // Replace with actual user name
+        document.getElementById('user-name-stat').textContent = 'Sonam Kumari'; // Replace with actual user name
         document.getElementById('user-age-stat').textContent = '30';      // Replace with actual user age
         document.getElementById('user-gender-stat').textContent = 'Female'; // Replace with actual user gender
 
+        
         // Dynamic Medical Trends with Images and Links (Simulated Real-time News)
-        const trendImage = document.getElementById('trend-image');
-        const trendText = document.getElementById('trend-text');
-        const trendLink = document.getElementById('trend-link');
-        const medicalTrendsHeadingDynamic = document.getElementById('medicalTrendsHeadingDynamic');
+const trendImage = document.getElementById('trend-image');
+const trendText = document.getElementById('trend-text');
+const trendLink = document.getElementById('trend-link');
+const medicalTrendsHeadingDynamic = document.getElementById('medicalTrendsHeadingDynamic');
 
-        const medicalNewsArticles = [
+const medicalNewsArticles = [
     {
         title: "Advancements in Telemedicine Improving Rural Healthcare Access",
-        image: "images/35a5b90a2800657e43f0aff1ea711d7f.jpg", // Relative path
+        // **FIXED: Use a direct image URL here**
+        image: "https://imgur.com/a/g0cZdL7", // <--- REPLACE 'XXXXXXXXX.jpg' with your actual direct image URL
         description: "Innovative telemedicine platforms are bridging the gap in healthcare access for remote communities.",
-        url: "https://example.com/articles/telemedicine-advancements" // Replace with an actual article URL
+       
     }
+    // Add more articles as needed
 ];
-        let currentArticleIndex = 0;
+
+let currentArticleIndex = 0;
+
+function updateMedicalTrend() {
+    const currentArticle = medicalNewsArticles[currentArticleIndex];
+    medicalTrendsHeadingDynamic.textContent = currentArticle.title; // Update title
+    trendImage.src = currentArticle.image;
+    trendText.textContent = currentArticle.description;
+    trendLink.href = currentArticle.url; // Update link
+
+    currentArticleIndex = (currentArticleIndex + 1) % medicalNewsArticles.length;
+}
+
+// Call it once to display initial content
+updateMedicalTrend();
+// Set interval for continuous updates
+setInterval(updateMedicalTrend, 7000); // Change image and text every 7 seconds
 
         function updateMedicalTrend() {
             const currentArticle = medicalNewsArticles[currentArticleIndex];
