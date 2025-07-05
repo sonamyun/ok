@@ -1,310 +1,409 @@
-/* General Body and Font Styles */
+/* General Layout & Colors (ensure these are set up if not already) */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f4f7f6;
+    --card-background-color: #ffffff;
+    --text-color: #333;
+    --sidebar-bg: #2c3e50;
+    --sidebar-item-hover: #34495e;
+    --sidebar-item-active: #1abc9c;
+    --header-bg: #ecf0f1;
+    --border-color: #ddd;
+}
+
+/* Dark Theme Variables */
+body.dark-theme {
+    --background-color: #2c3e50;
+    --card-background-color: #34495e;
+    --text-color: #ecf0f1;
+    --sidebar-bg: #2c3e50;
+    --sidebar-item-hover: #1e2b38;
+    --sidebar-item-active: #1abc9c;
+    --header-bg: #34495e;
+    --border-color: #444;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f0f2f5; /* Light background for the dashboard */
-    display: flex; /* Use flexbox for sidebar and main content layout */
-    height: 100vh;
-    overflow: hidden; /* Prevent body scroll, content will scroll if needed */
-}
-
-/* Light Theme (Default) */
-body.light-theme {
-    --bg-color: #f0f2f5;
-    --card-bg-color: #ffffff;
-    --text-color: #333;
-    --sidebar-bg-color: #2c3e50; /* Dark blue-gray for sidebar */
-    --sidebar-text-color: #ecf0f1;
-    --sidebar-hover-bg: #34495e;
-    --sidebar-active-bg: #1abc9c; /* Greenish-blue for active */
-    --header-bg-color: #ffffff;
-    --header-border-bottom: 1px solid #ddd;
-    --search-bg-color: #f0f2f5;
-    --input-border-color: #ccc;
-    --button-primary-bg: #3498db;
-    --button-primary-color: #fff;
-    --button-hover-bg: #2980b9;
-    --kpi-progress-bg: #eee;
-    --kpi-progress-bar: #1abc9c;
-    --popup-bg: #fff;
-    --popup-border: 1px solid #ddd;
-    --tab-inactive-bg: #ecf0f1;
-    --tab-active-bg: #ffffff;
-    --tab-border-color: #ddd;
-    --link-color: #3498db;
-    --border-color-light: #eee;
-}
-
-/* Dark Theme */
-body.dark-theme {
-    --bg-color: #2c3e50;
-    --card-bg-color: #34495e;
-    --text-color: #ecf0f1;
-    --sidebar-bg-color: #22313f;
-    --sidebar-text-color: #ecf0f1;
-    --sidebar-hover-bg: #2c3e50;
-    --sidebar-active-bg: #16a085;
-    --header-bg-color: #34495e;
-    --header-border-bottom: 1px solid #4a6c8e;
-    --search-bg-color: #2c3e50;
-    --input-border-color: #555;
-    --button-primary-bg: #2980b9;
-    --button-primary-color: #fff;
-    --button-hover-bg: #1d6fa0;
-    --kpi-progress-bg: #4a6c8e;
-    --kpi-progress-bar: #16a085;
-    --popup-bg: #34495e;
-    --popup-border: 1px solid #4a6c8e;
-    --tab-inactive-bg: #2c3e50;
-    --tab-active-bg: #34495e;
-    --tab-border-color: #4a6c8e;
-    --link-color: #89cff0;
-    --border-color-light: #4a6c8e;
-}
-
-body {
-    background-color: var(--bg-color);
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Sidebar Styles */
 .sidebar {
     width: 250px;
-    background-color: var(--sidebar-bg-color);
-    color: var(--sidebar-text-color);
-    padding: 20px 0;
+    background-color: var(--sidebar-bg);
+    color: white;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    flex-shrink: 0; /* Prevent sidebar from shrinking */
 }
 
 .sidebar-item {
     display: flex;
     align-items: center;
     padding: 15px 20px;
-    color: var(--sidebar-text-color);
+    color: white;
     text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.sidebar-item:hover {
-    background-color: var(--sidebar-hover-bg);
-}
-
-.sidebar-item.active {
-    background-color: var(--sidebar-active-bg);
-    color: #fff; /* Ensure active item text is white for contrast */
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
 }
 
 .sidebar-item i {
-    margin-right: 15px; /* Spacing between icon and text */
-    font-size: 20px;
-    width: 25px; /* Ensure consistent icon width */
-    text-align: center;
+    margin-right: 15px;
+    font-size: 1.2em;
 }
 
-.sidebar-item span {
-    flex-grow: 1; /* Allow text to take remaining space */
+.sidebar-item:hover {
+    background-color: var(--sidebar-item-hover);
 }
 
-/* Main Content Area */
+.sidebar-item.active {
+    background-color: var(--sidebar-item-active);
+    font-weight: bold;
+}
+
 .main {
-    flex-grow: 1; /* Allow main content to take remaining space */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* Allow scrolling for main content if it overflows */
-    padding: 20px;
 }
 
-/* Header Styles */
 header {
+    background-color: var(--header-bg);
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: var(--header-bg-color);
-    border-bottom: var(--header-border-bottom);
-    margin-bottom: 20px;
-    border-radius: 8px; /* Rounded corners for header */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    flex-wrap: wrap; /* Allow header items to wrap on smaller screens */
-    gap: 15px; /* Spacing between header elements */
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .header-left h1 {
-    font-size: 24px;
     margin: 0;
     color: var(--text-color);
 }
 
-.search-bar {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.search-bar input {
-    padding: 10px 15px 10px 40px; /* Left padding for icon */
-    border: 1px solid var(--input-border-color);
-    border-radius: 20px;
-    background-color: var(--search-bg-color);
-    color: var(--text-color);
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    width: 250px; /* Fixed width for search bar */
-}
-
-.search-bar input::placeholder {
-    color: var(--text-color); /* Adjust placeholder color for readability */
-    opacity: 0.7;
-}
-
-.search-bar input:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-}
-
-.search-bar i {
-    position: absolute;
-    left: 15px;
-    color: #888;
-    font-size: 18px;
-}
+/* Removed search-bar styles */
 
 .header-right {
     display: flex;
     align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    gap: 20px; /* Space between elements */
+    position: relative; /* For dropdowns */
 }
 
-/* Language Dropdown */
 #language-select {
-    padding: 8px 30px 8px 10px; /* Adjust padding, leave space for custom arrow */
-    border: 1px solid var(--input-border-color);
+    padding: 8px 12px;
     border-radius: 5px;
-    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    background-color: var(--card-background-color);
     color: var(--text-color);
-    font-size: 15px;
-    cursor: pointer;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="%23888" d="M0,2.5 L5,7.5 L10,2.5 Z"/></svg>'); /* Small SVG arrow */
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 10px 10px;
-    min-width: 120px; /* Ensure dropdown has enough width */
 }
 
-#language-select:hover {
-    border-color: #999;
-}
-
-/* User Menu Dropdown */
-.user-menu {
+.user-menu, .notification-menu {
     position: relative;
-    display: inline-block;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
-.user-menu span {
-    font-weight: bold;
+.user-menu #user-email {
     margin-right: 10px;
     color: var(--text-color);
 }
 
-.user-icon {
-    font-size: 24px;
-    color: #3498db; /* A distinct color for the user icon */
+.user-icon, .notification-icon {
+    font-size: 1.8em;
+    color: var(--primary-color);
 }
 
-.user-dropdown-content {
+.notification-menu {
+    position: relative;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7em;
+    min-width: 15px;
+    text-align: center;
+    line-height: 1;
+    box-shadow: 0 0 0 2px var(--header-bg); /* Match header background */
+}
+
+
+.user-dropdown-content, .notifications-dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--card-bg-color);
-    min-width: 160px;
+    background-color: var(--card-background-color);
+    min-width: 200px; /* Adjusted width for notifications */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 0;
     border-radius: 8px;
+    top: 100%; /* Position below the icon */
+    right: 0;
+    margin-top: 10px; /* Space between icon and dropdown */
+    border: 1px solid var(--border-color);
     overflow: hidden; /* Ensures rounded corners */
 }
 
-.user-dropdown-content a {
+.user-dropdown-content a, .notifications-dropdown-content a {
     color: var(--text-color);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     transition: background-color 0.2s ease;
-    display: flex; /* For icon and text alignment */
-    align-items: center;
 }
 
-.user-dropdown-content a i {
-    margin-right: 10px;
-    font-size: 16px;
-    color: #888; /* Slightly subdued icon color */
+.user-dropdown-content a:hover, .notifications-dropdown-content a:hover {
+    background-color: #f1f1f1;
 }
 
-.user-dropdown-content a:hover {
-    background-color: var(--search-bg-color); /* Lighter background on hover */
+body.dark-theme .user-dropdown-content a:hover,
+body.dark-theme .notifications-dropdown-content a:hover {
+    background-color: #444;
 }
 
-.user-dropdown-content.show {
+.user-dropdown-content.show, .notifications-dropdown-content.show {
     display: block;
 }
 
-/* Dashboard Grid Layout */
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 20px;
+/* Dashboard Content Grid */
+.dashboard-content {
     flex-grow: 1;
-    padding-bottom: 20px; /* Add padding at the bottom for scrolling content */
+    padding: 20px;
+    overflow-y: auto; /* Enable scrolling for content if needed */
 }
 
-.card {
-    background-color: var(--card-bg-color);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+.dashboard-grid {
+    display: grid;
+    /* Updated grid areas due to chatbox removal and layout changes */
+    grid-template-areas:
+        "stats trends trends"
+        "quick-actions quick-actions quick-actions"
+        "calendar calendar kpi"; /* Calendar spans two columns, KPI is one */
+    grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+    gap: 20px; /* Space between grid items */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Assign grid areas to specific sections */
+.dashboard-grid .stats {
+    grid-area: stats;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightgreen; /* This is the light green background */
+}
+
+.dashboard-grid .trends {
+    grid-area: trends;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+.dashboard-grid .trends .trend-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.dashboard-grid .trends .trend-content a {
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.dashboard-grid .trends .trend-image {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.dashboard-grid .trends h2 {
+    font-size: 1.4em; /* Make news title more prominent */
+    margin-bottom: 10px;
+}
+
+.dashboard-grid .trends p {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+}
+
+
+.dashboard-grid .quick-actions {
+    grid-area: quick-actions;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-grid .quick-actions .action-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dashboard-grid .calendar {
+    grid-area: calendar;
+}
+
+.dashboard-grid .kpi-card {
+    grid-area: kpi;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* New Chat with AI Panel styles */
+#chat-panel {
+    display: none; /* Hidden by default */
+    padding: 30px;
+    margin: 20px;
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 180px); /* Adjust height to fill main content area */
     display: flex;
     flex-direction: column;
 }
 
+#chat-panel h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#chat-panel .chat-area-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows chat area to take available space */
+    justify-content: space-between;
+}
+
+#chat-panel .response {
+    background-color: var(--background-color);
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    font-size: 0.95em;
+    flex-grow: 1; /* Response area takes available height */
+    overflow-y: auto; /* Scroll if content overflows */
+    border: 1px solid var(--border-color);
+    margin-bottom: 15px; /* Space between response and input */
+}
+
+#chat-panel .chat-input-area {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px; /* Adjust spacing */
+}
+
+#chat-panel .chat-input-area input {
+    flex-grow: 1;
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: 1px solid var(--border-color);
+    outline: none;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#chat-panel .chat-input-area .submit-btn {
+    padding: 12px 25px;
+    border-radius: 25px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#chat-panel .chat-input-area .submit-btn:hover {
+    background-color: #0056b3;
+}
+
+#chat-panel .smart-features {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+#chat-panel .small-text {
+    font-size: 0.85em;
+    color: var(--secondary-color);
+    margin: 0;
+}
+#chat-panel .export-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+#chat-panel .export-btn:hover {
+    color: #0056b3;
+}
+
+
+/* Card general styles */
+.card {
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
 .card h2 {
-    font-size: 20px;
     margin-top: 0;
     margin-bottom: 15px;
     color: var(--text-color);
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between icon and heading */
-}
-
-.card h2 i {
-    font-size: 20px;
-    color: #3498db; /* Consistent icon color for headings */
+    font-size: 1.3em;
 }
 
 .card p, .card ul {
-    font-size: 15px;
+    font-size: 0.95em;
     line-height: 1.6;
     color: var(--text-color);
 }
@@ -317,310 +416,129 @@ header {
 
 .card ul li {
     margin-bottom: 8px;
-    position: relative;
-    padding-left: 15px;
 }
 
-.card ul li:last-child {
-    margin-bottom: 0;
-}
-
-.card ul li::before {
-    content: '•';
-    color: #1abc9c; /* Green dot */
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: bold;
-}
-
-/* Quick Actions Button Styles */
-.quick-actions .action-buttons {
-    display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap */
-    gap: 15px; /* Spacing between buttons */
-    margin-top: 15px;
-    justify-content: center; /* Center buttons horizontally */
-    flex-grow: 1; /* Allow button container to grow */
-    align-items: center; /* Vertically align buttons */
-}
-
-.quick-actions .btn {
-    padding: 15px 25px;
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
     border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Space between icon and text */
-    min-width: 150px; /* Ensure buttons have a minimum width */
-    color: #fff; /* Default text color for buttons */
-}
-
-.quick-actions .btn i {
-    font-size: 18px;
-}
-
-/* Specific button colors */
-.quick-actions .btn.help {
-    background-color: #e74c3c; /* Red */
-}
-.quick-actions .btn.help:hover {
-    background-color: #c0392b;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.quick-actions .btn.locate {
-    background-color: #2ecc71; /* Green */
-}
-.quick-actions .btn.locate:hover {
-    background-color: #27ae60;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.quick-actions .btn.doctor {
-    background-color: #f39c12; /* Orange */
-}
-.quick-actions .btn.doctor:hover {
-    background-color: #e67e22;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.quick-actions .btn.report { /* New button style */
-    background-color: #9b59b6; /* Purple */
-}
-.quick-actions .btn.report:hover {
-    background-color: #8e44ad;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.quick-actions .btn.appointment { /* New button style */
-    background-color: #3498db; /* Blue */
-}
-.quick-actions .btn.appointment:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-/* Chatbox Styles */
-.chatbox {
-    grid-column: span 2; /* Make chatbox span two columns in larger layouts */
-    display: flex;
-    flex-direction: column;
-}
-
-.chat-input-area {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.chat-input-area input {
-    flex-grow: 1;
-    padding: 12px 15px;
-    border: 1px solid var(--input-border-color);
-    border-radius: 25px;
-    background-color: var(--search-bg-color);
-    color: var(--text-color);
-    font-size: 15px;
-    outline: none;
-}
-
-.chat-input-area input:focus {
-    border-color: #3498db;
-}
-
-.chatbox .submit-btn {
-    padding: 10px 20px;
-    background-color: #1abc9c;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.chatbox .submit-btn:hover {
-    background-color: #16a085;
-}
-
-.chatbox .response {
-    margin-top: 15px;
-    padding: 15px;
-    background-color: var(--search-bg-color);
-    border-radius: 8px;
-    min-height: 80px; /* Ensure some height for response */
-    white-space: pre-wrap; /* Preserve line breaks */
-    word-wrap: break-word; /* Break long words */
-    font-size: 14px;
-    color: var(--text-color);
-}
-
-.chatbox .smart-features {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.chatbox .smart-features .small-text {
-    font-size: 13px;
-    color: #888;
-    margin: 0;
-}
-
-.chatbox .export-btn {
-    padding: 8px 15px;
-    background-color: #95a5a6;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
     gap: 8px;
     transition: background-color 0.3s ease;
 }
 
-.chatbox .export-btn:hover {
-    background-color: #7f8c8d;
-}
+.btn.help { background-color: #dc3545; color: white; }
+.btn.help:hover { background-color: #c82333; }
 
-/* KPI Card Progress Ring */
-.kpi-card {
+.btn.locate { background-color: #ffc107; color: #333; }
+.btn.locate:hover { background-color: #e0a800; }
+
+.btn.doctor { background-color: #28a745; color: white; }
+.btn.doctor:hover { background-color: #218838; }
+
+
+/* KPI Card specific styles */
+.progress-ring-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-}
-
-.progress-ring-container {
     margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .progress-ring {
     position: relative;
-    width: 120px; /* Size of the ring */
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100px;
+    height: 100px;
 }
 
 .progress-svg {
-    transform: rotate(-90deg); /* Start at the top */
     width: 100%;
     height: 100%;
+    transform: rotate(-90deg);
 }
 
 .progress-bg {
+    stroke-width: 10;
+    stroke: #e0e0e0;
     fill: none;
-    stroke: var(--kpi-progress-bg);
-    stroke-width: 10; /* Width of the progress line */
 }
 
 .progress-bar {
-    fill: none;
-    stroke: var(--kpi-progress-bar);
     stroke-width: 10;
-    stroke-linecap: round; /* Rounded ends for the progress bar */
+    stroke-linecap: round;
+    stroke: var(--primary-color);
+    fill: none;
     transition: stroke-dashoffset 0.8s ease-out;
 }
 
 .progress-text {
     position: absolute;
-    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 
-/* Settings Panel and Tabs */
-.settings-panel, .integrations-panel, .security-panel {
-    padding: 20px;
-    background-color: var(--card-bg-color);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
-    flex-grow: 1; /* Allow panels to grow and take space */
-    overflow-y: auto; /* Allow scrolling within panels */
+
+/* Settings/Panels General */
+.settings-panel {
+    background-color: var(--card-background-color);
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default, controlled by JS */
+    flex-direction: column; /* Ensure content stacks properly */
+    overflow-y: auto; /* Enable scrolling for panel content if needed */
+    height: calc(100vh - 180px); /* Give it a height so it scrolls if content is long */
 }
 
-.settings-panel h2, .integrations-panel h2, .security-panel h2 {
-    font-size: 24px;
+.settings-panel h2 {
+    color: var(--primary-color);
     margin-top: 0;
-    margin-bottom: 20px;
-    color: var(--text-color);
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.settings-panel h2 i, .integrations-panel h2 i, .security-panel h2 i {
-    font-size: 24px;
-    color: #3498db;
-}
-
-.settings-panel p, .integrations-panel p, .security-panel p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--text-color);
-    margin-bottom: 20px;
-}
-
 .settings-tabs {
     display: flex;
-    margin-bottom: 25px;
-    border-bottom: 1px solid var(--tab-border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
     flex-wrap: wrap;
-    gap: 5px; /* Small gap between tabs */
 }
 
 .settings-tab {
-    padding: 12px 20px;
+    background: none;
     border: none;
-    background-color: var(--tab-inactive-bg);
-    color: var(--text-color);
+    padding: 12px 20px;
     cursor: pointer;
-    font-size: 16px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-bottom: 3px solid transparent; /* For active indicator */
+    font-size: 1em;
+    color: var(--text-color);
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 .settings-tab:hover {
-    background-color: var(--tab-inactive-bg);
-    opacity: 0.9;
+    color: var(--primary-color);
 }
 
 .settings-tab.active {
-    background-color: var(--tab-active-bg);
-    color: #3498db;
+    border-bottom-color: var(--primary-color);
+    color: var(--primary-color);
     font-weight: bold;
-    border-bottom: 3px solid #3498db;
 }
 
 .settings-content {
     display: none;
-    padding-top: 10px; /* Space from tabs */
 }
 
 .settings-content.active {
@@ -628,22 +546,17 @@ header {
 }
 
 .settings-content h3 {
-    font-size: 18px;
+    color: var(--primary-color);
     margin-top: 0;
     margin-bottom: 20px;
-    color: var(--text-color);
-    border-bottom: 1px solid var(--border-color-light);
-    padding-bottom: 10px;
 }
 
 .setting-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border-color-light);
-    flex-wrap: wrap; /* Allow items to wrap */
-    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border-color);
 }
 
 .setting-item:last-of-type {
@@ -651,113 +564,87 @@ header {
 }
 
 .setting-item label {
-    font-size: 16px;
     font-weight: bold;
-    flex-basis: 30%; /* Give labels some fixed width */
-    min-width: 150px; /* Minimum width for label */
     color: var(--text-color);
 }
 
 .setting-item input[type="text"],
 .setting-item input[type="email"],
 .setting-item select {
-    flex-grow: 1;
-    padding: 10px 15px;
-    border: 1px solid var(--input-border-color);
-    border-radius: 8px;
-    background-color: var(--search-bg-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
     color: var(--text-color);
-    font-size: 15px;
-    outline: none;
-    min-width: 200px; /* Ensure inputs have minimum width */
+    width: 200px;
 }
-
-.setting-item select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="%23888" d="M0,2.5 L5,7.5 L10,2.5 Z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 10px 10px;
-    cursor: pointer;
-}
-
 
 .setting-item input[type="checkbox"] {
-    margin-left: auto; /* Push checkbox to the right */
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    accent-color: #3498db; /* Color the checkbox itself */
+    transform: scale(1.2);
 }
 
-.setting-item .btn-small {
+.btn-small {
     padding: 8px 15px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
     border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-    margin-left: 10px; /* Space between buttons */
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-.setting-item .btn-small:hover {
-    background-color: #2980b9;
+.btn-small:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 .save-settings-btn {
-    padding: 12px 25px;
-    background-color: #1abc9c;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 25px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    margin-top: 30px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
     transition: background-color 0.3s ease;
+    align-self: flex-start; /* Align to the left if flex-direction is column */
 }
 
 .save-settings-btn:hover {
-    background-color: #16a085;
+    background-color: #0056b3;
 }
 
-.save-settings-btn i {
-    font-size: 18px;
-}
-
-/* Integrations & Security Panel */
-.integration-item, .security-item {
-    background-color: var(--search-bg-color); /* Slightly different background for items */
-    padding: 20px;
-    border-radius: 10px;
+/* Integrations & Security & Resources panels - use similar styling */
+.integration-item, .security-item, .resource-item {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
-
-.integration-item h3, .security-item h3 {
-    font-size: 18px;
-    margin-top: 0;
-    margin-bottom: 10px;
+.integration-item h3, .security-item h3, .resource-item h3 {
+    margin: 0;
+    color: var(--primary-color);
+}
+.integration-item p, .security-item p, .resource-item p {
+    margin: 0;
+    font-size: 0.9em;
     color: var(--text-color);
 }
-
-.integration-item p, .security-item p {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Allow paragraph to take space */
+.integration-item .btn-small, .security-item .btn-small, .resource-item .btn-small {
+    align-self: flex-start;
 }
 
-/* Membership Popup */
+
+/* Popup styles */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -772,167 +659,173 @@ header {
 }
 
 .popup-content {
-    background-color: var(--popup-bg);
+    background-color: var(--card-background-color);
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     width: 90%;
-    border: var(--popup-border);
+    color: var(--text-color);
 }
 
 .popup-content h3 {
-    font-size: 22px;
+    color: var(--primary-color);
     margin-top: 0;
-    color: var(--text-color);
+    margin-bottom: 20px;
 }
 
 .popup-content p {
-    font-size: 16px;
     margin-bottom: 25px;
-    color: var(--text-color);
 }
 
 .popup-content button {
-    padding: 10px 25px;
-    background-color: #3498db;
-    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-size: 1em;
 }
 
 .popup-content button:hover {
-    background-color: #2980b9;
+    background-color: #0056b3;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
+
+/* FullCalendar specific styles (adjust to match theme) */
+.fc {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+}
+
+.fc .fc-toolbar-title {
+    color: var(--primary-color);
+}
+
+.fc .fc-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+.fc .fc-button:hover {
+    background-color: #0056b3;
+}
+
+.fc-daygrid-event {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: white !important;
+    font-size: 0.85em;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.fc-daygrid-event:hover {
+    opacity: 0.9;
+}
+
+.fc .fc-day-other .fc-daygrid-day-top {
+    opacity: 0.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
     .dashboard-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-areas:
+            "stats trends"
+            "quick-actions quick-actions"
+            "calendar kpi";
+        grid-template-columns: 1fr 1fr;
     }
-    .chatbox {
-        grid-column: span 1; /* On smaller screens, chatbox takes 1 column */
-    }
-    .main {
-        padding: 15px;
-    }
-    header {
+
+    .header-right {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-end;
         gap: 10px;
-        padding: 15px;
     }
-    .header-left, .header-right {
-        width: 100%;
-        justify-content: space-between;
-    }
-    .search-bar input {
-        width: 100%;
-    }
-    .sidebar {
-        width: 200px; /* Slightly smaller sidebar on tablets */
+
+    .user-dropdown-content, .notifications-dropdown-content {
+        right: 0;
+        left: auto;
     }
 }
 
 @media (max-width: 768px) {
     .sidebar {
-        width: 100%; /* Full width sidebar on very small screens */
-        height: auto;
-        flex-direction: row; /* Horizontal layout for sidebar items */
-        padding: 10px 0;
-        justify-content: center;
-        flex-wrap: wrap; /* Allow sidebar items to wrap */
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        width: 80px;
+    }
+    .sidebar span {
+        display: none;
     }
     .sidebar-item {
-        padding: 10px;
-        flex-grow: 1; /* Allow items to share space */
-        justify-content: center; /* Center content in item */
-    }
-    .sidebar-item span {
-        display: none; /* Hide text, show only icon on small screens */
+        justify-content: center;
+        padding: 15px 0;
     }
     .sidebar-item i {
-        margin-right: 0; /* No margin if text is hidden */
+        margin-right: 0;
     }
-    body {
-        flex-direction: column; /* Stack sidebar and main content */
-        height: auto; /* Allow body to grow */
-    }
-    .main {
-        padding: 10px;
-        min-height: calc(100vh - 70px); /* Adjust min-height if sidebar is fixed height */
-    }
+
     .dashboard-grid {
-        grid-template-columns: 1fr; /* Single column layout on mobile */
+        grid-template-areas:
+            "stats"
+            "trends"
+            "quick-actions"
+            "calendar"
+            "kpi";
+        grid-template-columns: 1fr;
     }
-    .quick-actions .action-buttons {
-        flex-direction: column; /* Stack buttons vertically */
-    }
-    .quick-actions .btn {
-        width: 100%; /* Full width buttons */
-    }
-    .settings-tabs {
-        flex-direction: column; /* Stack settings tabs vertically */
-    }
-    .settings-tab {
-        width: 100%; /* Full width tabs */
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    .settings-tab.active {
-        border-bottom: none;
-    }
-    .setting-item {
+
+    header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 15px;
     }
-    .setting-item label {
+
+    .header-left {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-right {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    .settings-tabs {
+        flex-direction: column;
+    }
+
+    .settings-tab {
         width: 100%;
         text-align: left;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        padding: 10px 15px;
     }
-    .setting-item input[type="text"],
-    .setting-item input[type="email"],
-    .setting-item select,
-    .setting-item .btn-small {
-        width: 100%;
-        margin-left: 0;
+
+    .settings-tab.active {
+        border-bottom-color: transparent;
+        border-left-color: var(--primary-color);
+    }
+
+    #chat-panel, .settings-panel {
+        height: auto; /* Allow panels to grow */
     }
 }
 
-/* Print Styles */
-@media print {
-    body {
-        display: block;
-        height: auto;
-        overflow: visible;
-        background-color: #fff;
-    }
-    .sidebar, header, .settings-panel, .integrations-panel, .security-panel, .popup-overlay, footer {
-        display: none !important;
-    }
-    .main {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        overflow: visible;
-    }
-    .dashboard-grid {
-        display: block;
-    }
-    .card {
-        page-break-inside: avoid;
-        margin-bottom: 20px;
-        border: 1px solid #eee;
-        box-shadow: none;
-    }
-    .chatbox .response {
-        background-color: #f9f9f9;
-        border: 1px dashed #ccc;
-    }
+.btn.book-appointment {
+    background-color: #9c27b0; /* A shade of purple, for example */
+    color: white;
+}
+.btn.book-appointment:hover {
+    background-color: #7b1fa2; /* Darker purple on hover */
 }

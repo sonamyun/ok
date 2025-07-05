@@ -59,6 +59,7 @@ const translations = {
     }
 };
 
+
 let currentLanguage = 'en'; // Default language
 
 function setLanguage(lang) {

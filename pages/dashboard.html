@@ -6,6 +6,10 @@
   <title>Swastha AI Dashboard</title>
   <link rel="stylesheet" href="dashboard.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+
 </head>
 <body>
   <div class="sidebar">
@@ -13,15 +17,23 @@
       <i class="fas fa-home"></i>
       <span>Home</span>
     </a>
-    <a href="#" class="sidebar-item" id="settings-sidebar-item" data-key="sidebarSettings">
+    <a href="#" class="sidebar-item" id="chat-sidebar-item" data-key="Chat">
+        <i class="fas fa-comments"></i>
+        <span>Chat with AI</span>
+    </a>
+    <a href="#" class="sidebar-item" id="settings-sidebar-item" data-key="Settings">
       <i class="fas fa-cog"></i>
       <span>Settings</span>
     </a>
-    <a href="#" class="sidebar-item" id="integrations-sidebar-item" data-key="sidebarIntegrations">
+    <a href="#" class="sidebar-item" id="resources-sidebar-item" data-key="Resources">
+        <i class="fas fa-book"></i>
+        <span>Resources</span>
+    </a>
+    <a href="#" class="sidebar-item" id="integrations-sidebar-item" data-key="Integrations">
         <i class="fas fa-puzzle-piece"></i>
         <span>Integrations</span>
     </a>
-    <a href="#" class="sidebar-item" id="security-sidebar-item" data-key="sidebarSecurity">
+    <a href="#" class="sidebar-item" id="security-sidebar-item" data-key="Security">
         <i class="fas fa-shield-alt"></i>
         <span>Security</span>
     </a>
@@ -30,16 +42,21 @@
     <header>
       <div class="header-left">
         <h1 data-key="dashboardTitle">Welcome to swastha AI</h1>
-        <div class="search-bar">
-          <input type="text" data-key="globalSearchPlaceholder" placeholder="Global Search..." oninput="console.log('Searching: ' + this.value)" />
-          <i class="fas fa-search"></i>
-        </div>
       </div>
       <div class="header-right">
         <select id="language-select" onchange="setLanguage(this.value)">
           <option value="en" data-key="langEnglish">English</option>
           <option value="ne" data-key="langNepali">Nepali</option>
-          </select>
+        </select>
+        <div class="notification-menu">
+            <i class="fas fa-bell notification-icon"></i>
+            <span class="notification-badge" id="notification-badge">0</span>
+            <div class="notifications-dropdown-content" id="notifications-dropdown">
+                <a href="#" data-key="notificationMessage">New message from Dr. Shraddha.</a>
+                <a href="#" data-key="notificationReminder">Reminder: Take medication at 8 PM.</a>
+                <a href="#" data-key="notificationAppointment">Upcoming appointment tomorrow.</a>
+            </div>
+        </div>
         <div class="user-menu">
           <span id="user-email">Loading...</span> <i class="fas fa-user-circle user-icon"></i>
           <div class="user-dropdown-content">
@@ -54,20 +71,21 @@
       <div class="dashboard-grid">
         <section class="stats card">
           <h2 data-key="userStatsHeading">User Stats</h2>
-          <p><span data-key="emailLabel">Email</span>: <span id="email-stat">Loading...</span></p>
-          <p><span data-key="authTypeLabel">Auth Type</span>: <span id="authType-stat">Loading...</span></p>
-          <p><span data-key="totalUsersLabel">Total Users</span>: <span id="totalUsers-stat">N/A</span></p>
-          <p><span data-key="activeUsersLabel">Active Users</span>: <span id="activeUsers-stat">N/A</span></p>
+          <p><span data-key="name">Name</span>: <span id="user-name-stat">Loading...</span></p>
+          <p><span data-key="age">Age</span>: <span id="user-age-stat">Loading...</span></p>
+          <p><span data-key="gender">Gender</span>: <span id="user-gender-stat">Loading...</span></p>
+          <p><span data-key="email">Email</span>: <span id="email-stat">Loading...</span></p>
+          <p><span data-key="authType">Auth Type</span>: <span id="authType-stat">Loading...</span></p>
         </section>
 
         <section class="trends card">
-          <h2 data-key="medicalTrendsHeading">Medical Trends</h2>
-          <p data-key="medicalTrendsParagraph">Recent health-related insights and updates. Stay informed about the latest in healthcare.</p>
-          <ul>
-            <li data-key="trendFlu">Increased flu cases reported in Bagmati Province.</li>
-            <li data-key="trendDiabetes">New guidelines for diabetes management published.</li>
-            <li data-key="trendTelemedicine">Telemedicine adoption growing.</li>
-          </ul>
+          <h2 id="medicalTrendsHeadingDynamic" data-key="medicalTrendsHeading">Medical Trends</h2>
+          <div class="trend-content">
+            <a id="trend-link" href="#" target="_blank" rel="noopener noreferrer">
+                <img id="trend-image" src="" alt="Medical Trend Image" class="trend-image">
+                <p id="trend-text" data-key="medicalTrendsParagraph">Loading medical trend...</p>
+            </a>
+          </div>
         </section>
 
         <section class="quick-actions card">
@@ -82,42 +100,17 @@
             <button class="btn doctor" onclick="askDoctor()" data-key="actionAskDoctor">
               <i class="fas fa-user-md"></i> Ask Doctor
             </button>
+            <button class="btn book-appointment" onclick="bookAppointment()" data-key="actionBookAppointment">
+              <i class="fas fa-calendar-check"></i> Book an Appointment
+            </button>
           </div>
-        </section>
-
-        <section class="chatbox card">
-          <h2 data-key="chatHeading">Chat with Swastha AI</h2>
-          <div class="chat-input-area">
-            <input type="text" id="chat-input" data-key="chatInputPlaceholder" placeholder="Describe your medical symptoms (e.g., I have a headache and feel dizzy)..." />
-            <button class="submit-btn" onclick="sendMessage()" data-key="sendButton">Send</button>
-          </div>
-          <div class="response" data-key="chatInitialResponse">Type your symptoms above to get assistance.</div>
-          <div class="smart-features">
-              <p class="small-text"><i class="fas fa-lightbulb"></i> <span data-key="smartSuggestionsText">Smart suggestions: "Meditation Helps decrease your stress"</span></p>
-              <button class="export-btn" onclick="console.log('Export chat clicked');" data-key="exportChatButton"><i class="fas fa-file-export"></i> Export Chat (PDF)</button>
-          </div>
-        </section>
-
-        <section class="to-do-list card">
-            <h2 data-key="todoListHeading"><i class="fas fa-clipboard-list"></i> To-Do List</h2>
-            <ul>
-              <li data-key="todoCheckup">Schedule annual check-up</li>
-              <li data-key="todoRecipes">Research healthy recipes</li>
-              <li data-key="todoExercise">Exercise for 30 minutes</li>
-            </ul>
         </section>
 
         <section class="calendar card">
             <h2 data-key="calendarHeading"><i class="fas fa-calendar-alt"></i> Calendar</h2>
-            <p><span data-key="calendarToday">Today</span>: <span data-key="calendarNoEvents">No special events.</span> <br> <span data-key="calendarUpcoming">Upcoming</span>: <span data-key="calendarDentalAppointment">Dental appointment (July 10).</span></p>
-        </section>
-
-        <section class="notifications card">
-            <h2 data-key="notificationsHeading"><i class="fas fa-bell"></i> Notifications</h2>
-            <ul>
-              <li data-key="notificationMessage">New message from Dr. Shraddha.</li>
-              <li data-key="notificationReminder">Reminder: Take medication at 8 PM.</li>
-            </ul>
+            <div id="interactive-calendar"></div>
+            <p><span data-key="calendarToday">Today</span>: <span data-key="calendarNoEvents">No special events.</span></p>
+            <p><span data-key="calendarUpcoming">Upcoming</span>: <span data-key="calendarDentalAppointment">Dental appointment (July 10).</span></p>
         </section>
 
         <section class="kpi-card card">
@@ -137,12 +130,27 @@
       </div>
     </div>
 
+    <div id="chat-panel" class="settings-panel" style="display: none;">
+        <h2 data-key="chatHeading"><i class="fas fa-comments"></i> Chat with Swastha AI</h2>
+        <div class="chat-area-container">
+            <div class="response" data-key="chatInitialResponse">Type your symptoms above to get assistance.</div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" data-key="chatInputPlaceholder" placeholder="Describe your medical symptoms (e.g., I have a headache and feel dizzy)..." />
+                <button class="submit-btn" onclick="sendMessage()" data-key="sendButton">Send</button>
+            </div>
+            <div class="smart-features">
+                <p class="small-text"><i class="fas fa-lightbulb"></i> <span data-key="smartSuggestionsText">Smart suggestions: "Meditation Helps decrease your stress"</span></p>
+                <button class="export-btn" onclick="console.log('Export chat clicked');" data-key="exportChatButton"><i class="fas fa-file-export"></i> Export Chat (PDF)</button>
+            </div>
+        </div>
+    </div>
+
     <div id="settings-panel" class="settings-panel" style="display: none;">
       <h2 data-key="settingsPanelHeading"><i class="fas fa-cog"></i> Settings</h2>
       <div class="settings-tabs">
         <button class="settings-tab active" data-tab="user-prefs" data-key="tabUserPrefs">User Preferences</button>
         <button class="settings-tab" data-tab="account-settings" data-key="tabAccountSettings">Account Settings</button>
-        <button class="settings-tab" data-tab="customization" data-key="tabCustomization">Customization</button>
+        <button class="settings-tab" data-tab="customization" data-tab="customization" data-key="tabCustomization">Customization</button>
         <button class="settings-tab" data-tab="system-settings" data-key="tabSystemSettings">System Settings</button>
       </div>
 
@@ -238,6 +246,26 @@
       </div>
     </div>
 
+    <div id="resources-panel" class="settings-panel" style="display: none;">
+        <h2 data-key="resourcesPanelHeading"><i class="fas fa-book"></i> Resources</h2>
+        <p data-key="resourcesParagraph">Access helpful medical information and guides.</p>
+        <div class="resource-item">
+            <h3 data-key="first Aid Guide">First Aid Guide</h3>
+            <p data-key="first Aid Guide">Essential steps for common emergencies.</p>
+            <button class="btn-small resource-link-btn" data-key="viewGuide" data-link="https://youtube.com/shorts/9HeRaGW3fyo?si=-feeDp1hP_80Yh88">View Guide</button>
+        </div>
+        <div class="resource-item">
+            <h3 data-key="nutrition Tips">Nutrition Tips</h3>
+            <p data-key="nutrition Tips">Healthy eating advice for a balanced diet.</p>
+            <button class="btn-small resource-link-btn" data-key="viewTips" data-link="https://www.who.int/news-room/fact-sheets/detail/healthy-diet">View Tips</button>
+        </div>
+        <div class="resource-item">
+            <h3 data-key="exercise Routines">Exercise Routines</h3>
+            <p data-key="exercise Routines">Simple routines to stay active.</p>
+            <button class="btn-small resource-link-btn" data-key="viewRoutines" data-link="https://www.redcross.org.uk/get-help/get-help-with-loneliness/wellbeing-support/creating-healthy-lifestyle">View Routines</button>
+        </div>
+    </div>
+
     <div id="integrations-panel" class="settings-panel" style="display: none;">
         <h2 data-key="integrationsPanelHeading"><i class="fas fa-puzzle-piece"></i> Integrations</h2>
         <p data-key="integrationsParagraph">Connect Swastha AI with your favorite third-party applications.</p>
@@ -288,10 +316,37 @@
   </div>
 
   <script type="module" src="dashboard.js"></script>
-  <script src="dashboard-translation.js"></script> <script type="module">
+  <script src="dashboard-translation.js"></script>
+  <script type="module">
     // Import auth for logout
     import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
     const auth = getAuth();
+
+    // Utility function to update popup content based on data-keys
+    window.updatePopupContent = function(popupId, keys) {
+        const popup = document.getElementById(popupId);
+        if (popup) {
+            if (keys.heading) {
+                const headingElement = popup.querySelector('h3');
+                if (headingElement) {
+                    headingElement.textContent = getTranslation(keys.heading);
+                }
+            }
+            if (keys.paragraph) {
+                const paragraphElement = popup.querySelector('p');
+                if (paragraphElement) {
+                    paragraphElement.textContent = getTranslation(keys.paragraph);
+                }
+            }
+            if (keys.button) {
+                const buttonElement = popup.querySelector('button');
+                if (buttonElement) {
+                    buttonElement.textContent = getTranslation(keys.button);
+                }
+            }
+        }
+    };
+
 
     // General utility functions for dashboard.html
     window.redirectHelp = function() {
@@ -300,12 +355,11 @@
 
     window.redirectLocate = function() {
       const location = encodeURIComponent("hospitals near Mahalaxmi Lalitpur Cosmos College Block B");
-      window.open(`https://www.google.com/maps/search/?api=1&query=${location}`, "_blank"); // Corrected Google Maps URL
+      window.open(`https://www.google.com/maps/search/${location}`, "_blank"); // Corrected Google Maps URL
     };
 
     window.askDoctor = function() {
       document.getElementById("membership-popup").style.display = "flex";
-      // Ensure the text within the popup is translated when it appears
       updatePopupContent('membership-popup', {
           heading: 'membershipRequiredHeading',
           paragraph: 'membershipRequiredParagraph',
@@ -313,33 +367,33 @@
       });
     };
 
+    // New function for "Book an Appointment"
+    window.bookAppointment = function() {
+        document.getElementById("membership-popup").style.display = "flex";
+        updatePopupContent('membership-popup', {
+            heading: 'membershipRequiredHeading',
+            paragraph: 'membershipRequiredParagraph',
+            button: 'closeButton'
+        });
+    };
+
     window.closeMembershipPopup = function() {
       document.getElementById("membership-popup").style.display = "none";
     };
 
-    // The setLanguage function is now handled by dashboard-translation.js
-    // window.changeLanguage = function(lang) {
-    //   console.log(`Language changed to: ${lang}`);
-    //   // Add logic here to change UI language dynamically
-    // };
-
     window.sendMessage = function() {
       const chatInput = document.getElementById('chat-input');
-      const responseDiv = document.querySelector('.chatbox .response');
+      const responseDiv = document.querySelector('#chat-panel .response'); // Corrected selector
       const message = chatInput.value.trim();
 
       if (message) {
-        // Use translation for initial response
         responseDiv.textContent = `${getTranslation('youLabel')}: ${message}\n${getTranslation('swasthaAILabel')}: ${getTranslation('processingRequest')}`;
-        chatInput.value = ''; // Clear input
+        chatInput.value = '';
 
-        // Simulate AI response after a delay
         setTimeout(() => {
-          // Use translation for simulated AI response
           responseDiv.textContent = `${getTranslation('youLabel')}: ${message}\n${getTranslation('swasthaAILabel')}: ${getTranslation('aiResponseHeadacheDizzy')}`;
         }, 2000);
       } else {
-        // Use translation for empty input message
         responseDiv.textContent = `${getTranslation('swasthaAILabel')}: ${getTranslation('pleaseTypeSymptoms')}`;
       }
     };
@@ -352,19 +406,26 @@
         window.location.href = "../index.html"; // Redirect to login page
       } catch (error) {
         console.error("Logout Error:", error);
-        alert(`${getTranslation('logoutFailed')}: ${error.message}`); // Translate alert message
+        alert(`${getTranslation('logoutFailed')}: ${error.message}`);
       }
     });
 
     // Toggle user dropdown menu
     document.querySelector('.user-icon').addEventListener('click', function(event) {
-      event.stopPropagation(); // Prevent click from immediately closing the dropdown
+      event.stopPropagation();
       this.nextElementSibling.classList.toggle('show');
     });
 
-    // Close the dropdown if the user clicks outside of it
+    // Toggle notifications dropdown menu
+    document.querySelector('.notification-icon').addEventListener('click', function(event) {
+        event.stopPropagation();
+        document.getElementById('notifications-dropdown').classList.toggle('show');
+        document.getElementById('notification-badge').textContent = '0'; // Clear badge on click
+    });
+
+    // Close any dropdown if the user clicks outside of it
     window.addEventListener('click', function(event) {
-      if (!event.target.closest('.user-menu')) {
+      if (!event.target.closest('.user-menu') && !event.target.closest('.notification-menu')) {
         var dropdowns = document.getElementsByClassName("user-dropdown-content");
         for (var i = 0; i < dropdowns.length; i++) {
           var openDropdown = dropdowns[i];
@@ -372,20 +433,29 @@
             openDropdown.classList.remove('show');
           }
         }
+        var notifDropdown = document.getElementById("notifications-dropdown");
+        if (notifDropdown && notifDropdown.classList.contains('show')) {
+            notifDropdown.classList.remove('show');
+        }
       }
     });
 
-    // Settings/Integrations/Security Panel Toggling
+    // Sidebar Panel Toggling
     const dashboardContent = document.getElementById('dashboard-content');
     const settingsPanel = document.getElementById('settings-panel');
+    const resourcesPanel = document.getElementById('resources-panel');
     const integrationsPanel = document.getElementById('integrations-panel');
     const securityPanel = document.getElementById('security-panel');
+    const chatPanel = document.getElementById('chat-panel'); // New chat panel
 
     function showPanel(panelToShow, sidebarItemId) {
         dashboardContent.style.display = 'none';
         settingsPanel.style.display = 'none';
+        resourcesPanel.style.display = 'none';
         integrationsPanel.style.display = 'none';
         securityPanel.style.display = 'none';
+        chatPanel.style.display = 'none'; // Hide new chat panel
+
         if (panelToShow) {
             panelToShow.style.display = 'block';
         } else {
@@ -402,9 +472,19 @@
         showPanel(null, 'home-sidebar-item');
     });
 
+    document.getElementById('chat-sidebar-item').addEventListener('click', function(e) { // New chat sidebar listener
+        e.preventDefault();
+        showPanel(chatPanel, 'chat-sidebar-item');
+    });
+
     document.getElementById('settings-sidebar-item').addEventListener('click', function(e) {
         e.preventDefault();
         showPanel(settingsPanel, 'settings-sidebar-item');
+    });
+
+    document.getElementById('resources-sidebar-item').addEventListener('click', function(e) {
+        e.preventDefault();
+        showPanel(resourcesPanel, 'resources-sidebar-item');
     });
 
     document.getElementById('integrations-sidebar-item').addEventListener('click', function(e) {
@@ -417,21 +497,23 @@
         showPanel(securityPanel, 'security-sidebar-item');
     });
 
-
-    // Settings Tabs Logic
-    document.querySelectorAll('.settings-tab').forEach(tab => {
+    // Settings Tabs Logic (applies to all settings-panel types)
+    document.querySelectorAll('.settings-panel .settings-tab').forEach(tab => {
         tab.addEventListener('click', function() {
-            document.querySelectorAll('.settings-tab').forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            document.querySelectorAll('.settings-content').forEach(content => content.style.display = 'none');
-            document.getElementById(this.dataset.tab).style.display = 'block';
+            const parentPanel = this.closest('.settings-panel');
+            if (parentPanel) {
+                parentPanel.querySelectorAll('.settings-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                parentPanel.querySelectorAll('.settings-content').forEach(content => content.style.display = 'none');
+                document.getElementById(this.dataset.tab).style.display = 'block';
+            }
         });
     });
 
     // Progress Ring Initialization
     document.querySelectorAll('.progress-ring').forEach(ring => {
-        const progress = ring.dataset.progress; // Get progress from data-progress attribute
-        const radius = 45; // Hardcoded from SVG
+        const progress = ring.dataset.progress;
+        const radius = 45;
         const circumference = 2 * Math.PI * radius;
         const offset = circumference - (progress / 100) * circumference;
         const progressBar = ring.querySelector('.progress-bar');
@@ -439,18 +521,15 @@
 
         progressBar.style.strokeDasharray = `${circumference} ${circumference}`;
         progressBar.style.strokeDashoffset = offset;
-        progressBar.style.transition = 'stroke-dashoffset 0.8s ease-out'; // Animation
+        progressBar.style.transition = 'stroke-dashoffset 0.8s ease-out';
 
         progressText.textContent = `${progress}%`;
     });
 
-
-    // --- Theme Switcher Functionality ---
+    // Theme Switcher Functionality
     const themeSelect = document.getElementById('theme-select');
-
     function applyTheme(theme) {
-        document.body.classList.remove('light-theme', 'dark-theme'); // Remove existing themes
-
+        document.body.classList.remove('light-theme', 'dark-theme');
         if (theme === 'dark') {
             document.body.classList.add('dark-theme');
         } else if (theme === 'light') {
@@ -462,29 +541,135 @@
                 document.body.classList.add('light-theme');
             }
         }
-        localStorage.setItem('selectedTheme', theme); // Save preference
+        localStorage.setItem('selectedTheme', theme);
     }
 
-    // Load theme on page load
-    const savedTheme = localStorage.getItem('selectedTheme') || 'light'; // Default to light if no preference
-    themeSelect.value = savedTheme; // Set dropdown to saved value
-    applyTheme(savedTheme); // Apply the theme
-
+    const savedTheme = localStorage.getItem('selectedTheme') || 'light';
+    themeSelect.value = savedTheme;
+    applyTheme(savedTheme);
 
     themeSelect.addEventListener('change', (event) => {
         applyTheme(event.target.value);
     });
 
-    // --- Settings Save Buttons Functionality ---
+    // Settings Save Buttons Functionality
     document.querySelectorAll('.save-settings-btn').forEach(button => {
         button.addEventListener('click', () => {
             const category = button.dataset.category;
-            // Use translation for the alert message
             alert(`${getTranslation('settingsSavedPrefix')} ${getTranslation(category.replace(/\s/g, ''))}${getTranslation('settingsSavedSuffix')}`);
             console.log(`Settings saved for ${category}! (Functionality to save to backend/storage would go here)`);
         });
     });
 
+    // FullCalendar Initialization
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('interactive-calendar');
+        if (calendarEl) {
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Dental Appointment',
+                        start: '2025-07-10',
+                        color: '#4CAF50'
+                    },
+                    {
+                        title: 'Annual Check-up',
+                        start: '2025-07-20T10:00:00',
+                        end: '2025-07-20T11:00:00',
+                        color: '#2196F3'
+                    },
+                    {
+                        title: 'Team Meeting',
+                        start: '2025-07-22T14:30:00',
+                        end: '2025-07-22T15:30:00',
+                        color: '#FFC107'
+                    },
+                    {
+                        title: 'Flu Vaccination Drive',
+                        start: '2025-07-25',
+                        display: 'background',
+                        color: '#FFEB3B'
+                    }
+                ],
+            });
+            calendar.render();
+        }
+
+        // Initialize User Stats (Placeholder for dynamic data)
+        document.getElementById('user-name-stat').textContent = 'Jane Doe'; // Replace with actual user name
+        document.getElementById('user-age-stat').textContent = '30';      // Replace with actual user age
+        document.getElementById('user-gender-stat').textContent = 'Female'; // Replace with actual user gender
+
+        // Dynamic Medical Trends with Images and Links (Simulated Real-time News)
+        const trendImage = document.getElementById('trend-image');
+        const trendText = document.getElementById('trend-text');
+        const trendLink = document.getElementById('trend-link');
+        const medicalTrendsHeadingDynamic = document.getElementById('medicalTrendsHeadingDynamic');
+
+        const medicalNewsArticles = [
+            {
+                title: "Breakthrough in Cancer Immunotherapy Discovered",
+                image: "https://via.placeholder.com/400x200/FF5733/FFFFFF?text=Cancer+Breakthrough",
+                description: "New research shows promising results for a novel immunotherapy approach, offering hope for difficult-to-treat cancers.",
+                url: "https://www.who.int/news-room/detail/breakthrough-cancer-immunotherapy" // Example link
+            },
+            {
+                title: "Global Initiative Launched to Combat Antimicrobial Resistance",
+                image: "https://via.placeholder.com/400x200/33FF57/000000?text=AMR+Initiative",
+                description: "Governments and organizations worldwide unite to tackle the growing threat of antibiotic-resistant bacteria.",
+                url: "https://www.who.int/news-room/detail/antimicrobial-resistance-initiative" // Example link
+            },
+            {
+                title: "Advancements in Telemedicine Improving Rural Healthcare Access",
+                image: "https://via.placeholder.com/400x200/3366FF/FFFFFF?text=Telemedicine+Growth",
+                description: "Innovative telemedicine platforms are bridging the gap in healthcare access for remote communities.",
+                url: "https://www.who.int/news-room/detail/telemedicine-access" // Example link
+            },
+            {
+                title: "New Dietary Guidelines Emphasize Plant-Based Nutrition",
+                image: "https://via.placeholder.com/400x200/FFFF33/000000?text=Plant-Based+Diet",
+                description: "Updated recommendations highlight the benefits of plant-rich diets for long-term health and sustainability.",
+                url: "https://www.who.int/news-room/detail/plant-based-nutrition" // Example link
+            }
+        ];
+        let currentArticleIndex = 0;
+
+        function updateMedicalTrend() {
+            const currentArticle = medicalNewsArticles[currentArticleIndex];
+            medicalTrendsHeadingDynamic.textContent = currentArticle.title; // Update title
+            trendImage.src = currentArticle.image;
+            trendText.textContent = currentArticle.description;
+            trendLink.href = currentArticle.url; // Update link
+
+            currentArticleIndex = (currentArticleIndex + 1) % medicalNewsArticles.length;
+        }
+
+        updateMedicalTrend();
+        setInterval(updateMedicalTrend, 7000); // Change image and text every 7 seconds
+
+        // Initialize notification badge count
+        const notificationCount = document.querySelectorAll('#notifications-dropdown a').length;
+        document.getElementById('notification-badge').textContent = notificationCount;
+
+        // Add event listeners for Resource links
+        document.querySelectorAll('.resource-link-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const link = this.dataset.link;
+                if (link) {
+                    window.open(link, '_blank');
+                } else {
+                    console.warn('Resource link not found for this button.');
+                }
+            });
+        });
+    });
+
   </script>
 </body>
-</html>
+</html> 
